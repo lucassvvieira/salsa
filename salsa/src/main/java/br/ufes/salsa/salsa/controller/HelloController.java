@@ -1,4 +1,4 @@
-package br.ufes.salsa.controller;
+package br.ufes.salsa.salsa.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
