@@ -50,6 +50,9 @@ public class Donator extends AbstractModel {
 	private String cnh;
 	
 	// Getters and Setters
+	public Long getId() {
+		return id;
+	}
 	public String getFirstName() {
 		return firstName;
 	}

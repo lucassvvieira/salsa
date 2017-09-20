@@ -1,5 +1,7 @@
 package br.ufes.salsa.salsa.model;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,7 +18,19 @@ public class Message extends AbstractModel {
 	
 	private String title;
 	private String body;
+	private Date sendDate;
 	
+	// Getters and Setters
+	
+	public Long getId() {
+		return id;
+	}
+	public Date getSendDate() {
+		return sendDate;
+	}
+	public void setSendDate(Date sendDate) {
+		this.sendDate = sendDate;
+	}
 	public String getTitle() {
 		return title;
 	}
