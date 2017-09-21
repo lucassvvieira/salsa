@@ -10,13 +10,23 @@ import { SwitchesComponent } from './switches.component';
 import { TablesComponent } from './tables.component';
 import { TabsComponent } from './tabs.component';
 
+// My own imports
+import { DonatorFormComponent } from './donator-form.component';
+
 const routes: Routes = [
   {
     path: '',
     data: {
-      title: 'Components'
+      title: 'Salsa'
     },
     children: [
+      {
+        path: 'donator-form',
+        component: DonatorFormComponent,
+        data: {
+          title: 'Formulário de Doador'
+        }
+      },
       {
         path: 'buttons',
         component: ButtonsComponent,

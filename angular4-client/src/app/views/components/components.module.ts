@@ -22,6 +22,9 @@ import { TabsComponent } from './tabs.component';
 // Components Routing
 import { ComponentsRoutingModule } from './components-routing.module';
 
+// My own components
+import { DonatorFormComponent } from './donator-form.component';
+
 @NgModule({
   imports: [
     ComponentsRoutingModule,
@@ -30,6 +33,7 @@ import { ComponentsRoutingModule } from './components-routing.module';
     TabsModule
   ],
   declarations: [
+    DonatorFormComponent,
     ButtonsComponent,
     CardsComponent,
     FormsComponent,
