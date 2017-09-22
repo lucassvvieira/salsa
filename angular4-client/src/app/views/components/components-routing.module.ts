@@ -13,6 +13,7 @@ import { TabsComponent } from './tabs.component';
 // My own imports
 import { DonatorFormComponent } from './donator-form.component';
 import { DonatorSearchComponent } from './donator-search.component';
+import { DonatorStatisticsComponent } from './donator-statistics.component';
 
 const routes: Routes = [
   {
@@ -33,6 +34,13 @@ const routes: Routes = [
         component: DonatorSearchComponent,
         data: {
           title: 'Busca de Doador'
+        }
+      },
+      {
+        path: 'donator-statistics',
+        component: DonatorStatisticsComponent,
+        data: {
+          title: 'Estatísticas dos Doadores'
         }
       },
       {

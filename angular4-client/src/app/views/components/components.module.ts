@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { ChartsModule } from 'ng2-charts/ng2-charts';
 
 import { ButtonsComponent } from './buttons.component';
 import { CardsComponent } from './cards.component';
@@ -25,17 +26,20 @@ import { ComponentsRoutingModule } from './components-routing.module';
 // My own components
 import { DonatorFormComponent } from './donator-form.component';
 import { DonatorSearchComponent } from './donator-search.component';
+import { DonatorStatisticsComponent } from './donator-statistics.component';
 
 @NgModule({
   imports: [
     ComponentsRoutingModule,
     BsDropdownModule.forRoot(),
     ModalModule.forRoot(),
-    TabsModule
+    TabsModule,
+    ChartsModule
   ],
   declarations: [
     DonatorFormComponent,
     DonatorSearchComponent,
+    DonatorStatisticsComponent,
     ButtonsComponent,
     CardsComponent,
     FormsComponent,

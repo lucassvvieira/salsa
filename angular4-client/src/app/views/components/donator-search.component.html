@@ -42,10 +42,13 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-md-4 form-control-label" for="text-input">Data de Nascimento</label>
+                                        <label class="col-md-3 form-control-label" for="select">Sexo</label>
                                         <div class="col-md-9">
-                                            <input type="date" id="birthdate-input" name="text-input" class="form-control" placeholder="birthdate">
-                                            <span class="help-block"></span>
+                                            <select id="sex" name="select" class="form-control">
+                                                                        <option value="0">Escolha o sexo do doador</option>
+                                                                        <option value="masculino">Masculino</option>
+                                                                        <option value="feminino">Feminino</option>
+                                                                      </select>
                                         </div>
                                     </div>
                                 </div>
@@ -82,23 +85,23 @@
                                     </div>
                                 </div>
                             </div>
-                             <!--Beggining of the third card -->
+                            <!--Beggining of the third card -->
                             <div class="card">
-                                    <div class="card-header">
-                                            <strong>Aptidão do doador</strong>
-                                    </div>
-                                    <div class="card-body">
-                                            <div class="form-group row">
-                                                    <label class="col-md-3 form-control-label" for="select">Apto para nova doação?</label>
-                                                    <div class="col-md-9">
-                                                        <select id="aptitude" name="select" class="form-control">
+                                <div class="card-header">
+                                    <strong>Aptidão do doador</strong>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-group row">
+                                        <label class="col-md-3 form-control-label" for="select">Apto para nova doação?</label>
+                                        <div class="col-md-9">
+                                            <select id="aptitude" name="select" class="form-control">
                                                                                                             <option value="0">Aptidão</option>
                                                                                                             <option value="true">Sim</option>
                                                                                                             <option value="false">Não</option>
                                                                                                           </select>
-                                                    </div>
-                                                </div>
+                                        </div>
                                     </div>
+                                </div>
                             </div>
                         </div>
                         <!--End of the first row -->
@@ -106,8 +109,8 @@
                 </form>
             </div>
             <div class="card-footer">
-                    <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> Buscar!</button>
-                    <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Resetar</button>
+                <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> Buscar!</button>
+                <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Resetar</button>
             </div>
         </div>
     </div>
