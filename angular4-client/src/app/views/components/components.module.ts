@@ -24,6 +24,7 @@ import { ComponentsRoutingModule } from './components-routing.module';
 
 // My own components
 import { DonatorFormComponent } from './donator-form.component';
+import { DonatorSearchComponent } from './donator-search.component';
 
 @NgModule({
   imports: [
@@ -34,6 +35,7 @@ import { DonatorFormComponent } from './donator-form.component';
   ],
   declarations: [
     DonatorFormComponent,
+    DonatorSearchComponent,
     ButtonsComponent,
     CardsComponent,
     FormsComponent,

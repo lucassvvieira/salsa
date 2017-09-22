@@ -1,0 +1,114 @@
+<div class="animated fadeIn">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <strong>Busca</strong> de Doador
+            </div>
+            <div class="card-body">
+                <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <strong>Dados pessoais</strong>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-group row">
+                                        <label class="col-md-3 form-control-label" for="text-input">Primeiro nome</label>
+                                        <div class="col-md-9">
+                                            <input type="text" id="name-input" name="text-input" class="form-control" placeholder="Nome">
+                                            <span class="help-block"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-md-3 form-control-label" for="text-input">Sobrenome</label>
+                                        <div class="col-md-9">
+                                            <input type="text" id="surname-input" name="text-input" class="form-control" placeholder="Sobrenome">
+                                            <span class="help-block"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-md-3 form-control-label" for="text-input">Nome completo da mãe</label>
+                                        <div class="col-md-9">
+                                            <input type="text" id="mother-name-input" name="text-input" class="form-control" placeholder="Mãe">
+                                            <span class="help-block"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-md-3 form-control-label" for="text-input">Cidade</label>
+                                        <div class="col-md-9">
+                                            <input type="text" id="city-input" name="text-input" class="form-control" placeholder="Cidade">
+                                            <span class="help-block"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-md-4 form-control-label" for="text-input">Data de Nascimento</label>
+                                        <div class="col-md-9">
+                                            <input type="date" id="birthdate-input" name="text-input" class="form-control" placeholder="birthdate">
+                                            <span class="help-block"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Beggining of the second card -->
+                        <div class="col-sm-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <strong>Dados sanguíneos</strong>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-group row">
+                                        <label class="col-md-3 form-control-label" for="select">Tipo Sanguíneo</label>
+                                        <div class="col-md-9">
+                                            <select id="bloodtype" name="select" class="form-control">
+                                                                                                <option value="0">Escolha o tipo sanguíneo</option>
+                                                                                                <option value="A">A</option>
+                                                                                                <option value="B">B</option>
+                                                                                                <option value="O">O</option>
+                                                                                                <option value="AB">AB</option>
+                                                                                              </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-md-3 form-control-label" for="select">Fator RH</label>
+                                        <div class="col-md-9">
+                                            <select id="rhFactor" name="select" class="form-control">
+                                                                                                <option value="0">Escolha o Fator RH</option>
+                                                                                                <option value="+">+</option>
+                                                                                                <option value="-">-</option>
+                                                                                              </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                             <!--Beggining of the third card -->
+                            <div class="card">
+                                    <div class="card-header">
+                                            <strong>Aptidão do doador</strong>
+                                    </div>
+                                    <div class="card-body">
+                                            <div class="form-group row">
+                                                    <label class="col-md-3 form-control-label" for="select">Apto para nova doação?</label>
+                                                    <div class="col-md-9">
+                                                        <select id="aptitude" name="select" class="form-control">
+                                                                                                            <option value="0">Aptidão</option>
+                                                                                                            <option value="true">Sim</option>
+                                                                                                            <option value="false">Não</option>
+                                                                                                          </select>
+                                                    </div>
+                                                </div>
+                                    </div>
+                            </div>
+                        </div>
+                        <!--End of the first row -->
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer">
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> Buscar!</button>
+                    <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Resetar</button>
+            </div>
+        </div>
+    </div>
+</div>
