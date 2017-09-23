@@ -27,6 +27,7 @@ import { ComponentsRoutingModule } from './components-routing.module';
 import { DonatorFormComponent } from './donator-form.component';
 import { DonatorSearchComponent } from './donator-search.component';
 import { DonatorStatisticsComponent } from './donator-statistics.component';
+import { ModelFormComponent } from './model-form.component';
 
 @NgModule({
   imports: [
@@ -40,6 +41,7 @@ import { DonatorStatisticsComponent } from './donator-statistics.component';
     DonatorFormComponent,
     DonatorSearchComponent,
     DonatorStatisticsComponent,
+    ModelFormComponent,
     ButtonsComponent,
     CardsComponent,
     FormsComponent,

@@ -14,6 +14,7 @@ import { TabsComponent } from './tabs.component';
 import { DonatorFormComponent } from './donator-form.component';
 import { DonatorSearchComponent } from './donator-search.component';
 import { DonatorStatisticsComponent } from './donator-statistics.component';
+import { ModelFormComponent } from './model-form.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,13 @@ const routes: Routes = [
         component: DonatorStatisticsComponent,
         data: {
           title: 'Estatísticas dos Doadores'
+        }
+      },
+      {
+        path: 'model-form',
+        component: ModelFormComponent,
+        data: {
+          title: 'Cadastro de novo Modelo'
         }
       },
       {
