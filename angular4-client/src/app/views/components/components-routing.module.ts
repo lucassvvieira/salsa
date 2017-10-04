@@ -16,6 +16,7 @@ import { DonatorSearchComponent } from './donator-search.component';
 import { DonatorStatisticsComponent } from './donator-statistics.component';
 import { ModelFormComponent } from './model-form.component';
 import { SendComponent } from './send.component';
+import { SendResultComponent } from './send-result.component';
 
 const routes: Routes = [
   {
@@ -57,6 +58,13 @@ const routes: Routes = [
         component: SendComponent,
         data: {
           title: 'Envio de mensagens'
+        }
+      },
+      {
+        path: 'send-result',
+        component: SendResultComponent,
+        data: {
+          title: 'Resultado do filtro de doadores'
         }
       },
       {

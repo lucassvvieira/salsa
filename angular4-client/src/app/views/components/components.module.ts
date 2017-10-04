@@ -29,6 +29,7 @@ import { DonatorSearchComponent } from './donator-search.component';
 import { DonatorStatisticsComponent } from './donator-statistics.component';
 import { ModelFormComponent } from './model-form.component';
 import { SendComponent } from './send.component';
+import { SendResultComponent } from './send-result.component';
 
 @NgModule({
   imports: [
@@ -44,6 +45,7 @@ import { SendComponent } from './send.component';
     DonatorStatisticsComponent,
     ModelFormComponent,
     SendComponent,
+    SendResultComponent,
     ButtonsComponent,
     CardsComponent,
     FormsComponent,

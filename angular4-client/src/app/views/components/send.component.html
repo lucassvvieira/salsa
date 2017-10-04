@@ -109,7 +109,7 @@
                 </form>
             </div>
             <div class="card-footer">
-                <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-dot-circle-o"></i> Prosseguir</button>
+                <button type="submit" routerLinkActive="active" [routerLink]="['/components/send-result']" class="btn btn-sm btn-success"><i class="fa fa-dot-circle-o"></i> Prosseguir</button>
                 <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Limpar campos</button>
             </div>
         </div>
@@ -118,8 +118,8 @@
     <div class="mx-auto col-md-4">
         <div class="card text-white bg-success text-center">
             <div class="card-header">
-                       <strong>Atenção!</strong>
-                   </div>
+                <strong>Atenção!</strong>
+            </div>
             <div class="card-body">
                 <blockquote class="card-bodyquote">
                     <p>Lembre-se que os campos não preenchidos no formulário não serão utilizados para realizar a busca, ok?</p>
