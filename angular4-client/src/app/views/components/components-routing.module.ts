@@ -15,6 +15,7 @@ import { DonatorFormComponent } from './donator-form.component';
 import { DonatorSearchComponent } from './donator-search.component';
 import { DonatorStatisticsComponent } from './donator-statistics.component';
 import { ModelFormComponent } from './model-form.component';
+import { SendComponent } from './send.component';
 
 const routes: Routes = [
   {
@@ -49,6 +50,13 @@ const routes: Routes = [
         component: ModelFormComponent,
         data: {
           title: 'Cadastro de novo Modelo'
+        }
+      },
+      {
+        path: 'send',
+        component: SendComponent,
+        data: {
+          title: 'Envio de mensagens'
         }
       },
       {
