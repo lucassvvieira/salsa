@@ -36,10 +36,12 @@ public class Donator extends AbstractModel {
 	private String cep;
 	
 	// Blood data
-	private Blood bloodType;
+	private String bloodType;
 	private String bloodFactor;
+	private Boolean aptitude;
 	
 	// Donator other data
+	private String sex;
 	private String phone;
 	private String color;
 	private String profession;
@@ -131,10 +133,10 @@ public class Donator extends AbstractModel {
 	public void setCep(String cep) {
 		this.cep = cep;
 	}
-	public Blood getBloodType() {
+	public String getBloodType() {
 		return bloodType;
 	}
-	public void setBloodType(Blood bloodType) {
+	public void setBloodType(String bloodType) {
 		this.bloodType = bloodType;
 	}
 	public String getBloodFactor() {
@@ -190,6 +192,18 @@ public class Donator extends AbstractModel {
 	}
 	public void setCnh(String cnh) {
 		this.cnh = cnh;
+	}
+	public Boolean getAptitude() {
+		return aptitude;
+	}
+	public void setAptitude(Boolean aptitude) {
+		this.aptitude = aptitude;
+	}
+	public String getSex() {
+		return sex;
+	}
+	public void setSex(String sex) {
+		this.sex = sex;
 	}
 	
 }
