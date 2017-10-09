@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.ufes.salsa.salsa.model.Donator;
+import br.ufes.salsa.salsa.model.DonatorStats;
 import br.ufes.salsa.salsa.repository.DonatorRepository;
 
 @RequestMapping("/api/donators")
@@ -23,21 +24,46 @@ public class DonatorController extends AbstractController<Donator, DonatorReposi
 	@Autowired
 	private DonatorRepository repository;
 	
-	@GetMapping({"", "/"})
+	@RequestMapping({"", "/"})
 	public ResponseEntity<List<Donator>> index() {
 		List<Donator> donators = repository.findAll();
 		return new ResponseEntity<List<Donator>>(donators, HttpStatus.OK);
 	}
 	
-	@PutMapping("/:id")
-	public ResponseEntity<?> patch(@RequestBody Donator donator, @RequestParam("id") Long id) {
-		if (donator.getId() == id) {
-			repository.save(donator);
-			return new ResponseEntity<>(HttpStatus.OK);
-		} else {
-			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-		}
+	@RequestMapping(value = "/result", method = RequestMethod.GET)
+	public ResponseEntity<List<Donator>> search(String firstName, String lastName, String mothersName, String city, String sex, String bloodType,
+			String bloodFactor, Boolean aptitude) {
+		List<Donator> donators = repository.findByFirstNameAndLastNameAndMothersNameAndCityAndSexAndBloodTypeAndBloodFactorAndAptitude(
+				firstName, lastName, mothersName, city, sex, bloodType, bloodFactor, aptitude);
+		return new ResponseEntity<List<Donator>>(donators, HttpStatus.OK);
 	}
+	
+	@RequestMapping(value = "/statistics", method = RequestMethod.GET)
+	public ResponseEntity<DonatorStats> getStats() {
+		DonatorStats stats = new DonatorStats();
+		
+		// General people number query's
+		stats.setDonatorsNumber(repository.count());
+		stats.setMaleNumber(repository.countBySex("male"));
+		stats.setFemaleNumber(repository.countBySex("female"));
+		
+		// Blood numbers
+		stats.setaPlusNumber(repository.countByBloodTypeAndBloodFactor("A", "+"));
+		stats.setaMinusNumber(repository.countByBloodTypeAndBloodFactor("A", "-"));
+		stats.setbPlusNumber(repository.countByBloodTypeAndBloodFactor("B", "+"));
+		stats.setbMinusNumber(repository.countByBloodTypeAndBloodFactor("B", "-"));
+		stats.setAbPlusNumber(repository.countByBloodTypeAndBloodFactor("AB", "+"));
+		stats.setAbMinusNumber(repository.countByBloodTypeAndBloodFactor("AB", "-"));
+		stats.setoPlusNumber(repository.countByBloodTypeAndBloodFactor("O", "+"));
+		stats.setoMinusNumber(repository.countByBloodTypeAndBloodFactor("O", "-"));
+		
+		// Aptitude numbers
+		stats.setAptNumber(repository.countByAptitude(true));
+		stats.setUnaptNumber(repository.countByAptitude(false));
+		
+		return new ResponseEntity<DonatorStats>(stats, HttpStatus.OK);
+	}
+	
 	
 	@RequestMapping(value = "", method = RequestMethod.POST)
 	public ResponseEntity<Donator> save(@RequestBody Donator d) {
