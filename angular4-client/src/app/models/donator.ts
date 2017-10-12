@@ -17,7 +17,7 @@ export class Donator {
     complement: string;
     cep: string;
     // Blood data
-    bloodType: string
+    bloodType: string;
     bloodFactor: string;
     aptitude: boolean;
     // Other information
