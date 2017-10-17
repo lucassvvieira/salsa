@@ -24,7 +24,7 @@ export class MessageService {
         return Promise.reject(error.message || error);
     }
 
-    getmessage(id: number): Promise<Message> {
+    getMessage(id: number): Promise<Message> {
         const url = `${this.messagesUrl}/${id}`;
         return this.http.get(url)
             .toPromise()

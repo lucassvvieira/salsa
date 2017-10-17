@@ -42,15 +42,16 @@ export class DonatorService {
     }
 
     create(firstName: string, lastName: string, fathersName: string, mothersName: string, birthDate: Date, registerDate: Date,
-        lastDonation: Date, state: string, city: string, neighborhood: string, street: string, complement: string,
+        state: string, city: string, neighborhood: string, street: string, complement: string,
         cep: string, bloodType: string, bloodFactor: string, aptitude: boolean, sex: string, phone: string,
         color: string, profession: string, nacionality: string, civilState: string, rg: string, cpf: string,
         cnh: string): Promise<Donator> {
+        console.log('Donators service submitted the transaction!');
         return this.http
             .post(this.donatorsUrl,
             JSON.stringify({
                 firstName: firstName, lastName: lastName, fathersName: fathersName, mothersName: mothersName,
-                birthDate: birthDate, registerDate: registerDate, lastDonation: lastDonation, state: state, city: city,
+                birthDate: birthDate, registerDate: registerDate, state: state, city: city,
                 neighborhood: neighborhood, street: street, complement: complement, cep: cep, bloodType: bloodType,
                 bloodFactor: bloodFactor, aptitude: aptitude, sex: sex, phone: phone, color: color, profession: profession,
                 nacionality: nacionality, civilState: civilState, rg: rg, cpf: cpf, cnh: cnh
