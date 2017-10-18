@@ -17,8 +17,8 @@ export class DonatorSearchComponent {
   constructor(
     private donatorService: DonatorService,
     private router: Router,
-    private location: Location
-  ) { }
+    private location: Location,
+  ) {this.donator = new Donator();}
 
   goToListing(): void {
     this.router.navigate(['components/result', this.donator]);
