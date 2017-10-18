@@ -75,36 +75,37 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-md-3 form-control-label" for="multiple-select">Estado</label>
+                                        <label class="col-md-3 form-control-label" for="select">Estado</label>
                                         <div class="col-md-9">
-                                            <select id="state" [(ngModel)]="donator.state" name="state" class="form-control" size="4" multiple>
-                                                        <option value="AC">AC</option>
-                                                        <option value="AP">AP</option>
-                                                        <option value="AM">AM</option>
-                                                        <option value="BA">BA</option>
-                                                        <option value="CE">CE</option>
-                                                        <option value="DF">DF</option>
-                                                        <option value="ES">ES</option>
-                                                        <option value="GO">GO</option>
-                                                        <option value="MA">MA</option>
-                                                        <option value="MT">MT</option>
-                                                        <option value="MS">MS</option>
-                                                        <option value="MG">MG</option>
-                                                        <option value="PA">PA</option>
-                                                        <option value="PB">PB</option>
-                                                        <option value="PR">PR</option>
-                                                        <option value="PE">PE</option>
-                                                        <option value="PI">PI</option>
-                                                        <option value="RJ">RJ</option>
-                                                        <option value="RN">RN</option>
-                                                        <option value="RS">RS</option>
-                                                        <option value="RO">RO</option>
-                                                        <option value="RR">RR</option>
-                                                        <option value="SC">SC</option>
-                                                        <option value="SP">SP</option>
-                                                        <option value="SE">SE</option>
-                                                        <option value="TO">TO</option>
-                                                      </select>
+                                            <select id="state" [(ngModel)]="donator.state" name="state" class="form-control">
+                                                                    <option value="">Escolha o estado</option>
+                                                                    <option value="AC">AC</option>
+                                                                    <option value="AP">AP</option>
+                                                                    <option value="AM">AM</option>
+                                                                    <option value="BA">BA</option>
+                                                                    <option value="CE">CE</option>
+                                                                    <option value="DF">DF</option>
+                                                                    <option value="ES">ES</option>
+                                                                    <option value="GO">GO</option>
+                                                                    <option value="MA">MA</option>
+                                                                    <option value="MT">MT</option>
+                                                                    <option value="MS">MS</option>
+                                                                    <option value="MG">MG</option>
+                                                                    <option value="PA">PA</option>
+                                                                    <option value="PB">PB</option>
+                                                                    <option value="PR">PR</option>
+                                                                    <option value="PE">PE</option>
+                                                                    <option value="PI">PI</option>
+                                                                    <option value="RJ">RJ</option>
+                                                                    <option value="RN">RN</option>
+                                                                    <option value="RS">RS</option>
+                                                                    <option value="RO">RO</option>
+                                                                    <option value="RR">RR</option>
+                                                                    <option value="SC">SC</option>
+                                                                    <option value="SP">SP</option>
+                                                                    <option value="SE">SE</option>
+                                                                    <option value="TO">TO</option>
+                                                                  </select>
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -159,7 +160,7 @@
                                         <label class="col-md-3 form-control-label" for="select">Sexo</label>
                                         <div class="col-md-9">
                                             <select id="sex" [(ngModel)]="donator.sex" name="sex" class="form-control">
-                                                                    <option value="0">Escolha o sexo do doador</option>
+                                                                    <option value="">Escolha o sexo do doador</option>
                                                                     <option value="masculino">Masculino</option>
                                                                     <option value="feminino">Feminino</option>
                                                                   </select>
@@ -183,6 +184,13 @@
                                         <label class="col-md-3 form-control-label" for="text-input">Estado Civil</label>
                                         <div class="col-md-9">
                                             <input type="text" id="civilState" [(ngModel)]="donator.civilState" name="civilState" class="form-control" placeholder="Estado Civil">
+                                            <span class="help-block"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-md-3 form-control-label" for="text-input">Nacionalidade</label>
+                                        <div class="col-md-9">
+                                            <input type="text" id="nacionality" [(ngModel)]="donator.nacionality" name="nacionality" class="form-control" placeholder="Nacionalidade">
                                             <span class="help-block"></span>
                                         </div>
                                     </div>
@@ -221,7 +229,7 @@
                                         <label class="col-md-3 form-control-label" for="select">Tipo Sanguíneo</label>
                                         <div class="col-md-9">
                                             <select id="bloodtype" [(ngModel)]="donator.bloodType" name="bloodType" class="form-control">
-                                                            <option value="0">Escolha o tipo sanguíneo</option>
+                                                            <option value="">Escolha o tipo sanguíneo</option>
                                                             <option value="A">A</option>
                                                             <option value="B">B</option>
                                                             <option value="O">O</option>
@@ -232,7 +240,7 @@
                                     <div class="form-group row">
                                         <label class="col-md-3 form-control-label" for="select">Fator RH</label>
                                         <div class="col-md-9">
-                                            <select id="rhFactor" [(ngModel)]="donator.rhFactor" name="rhFactor" class="form-control">
+                                            <select id="bloodFactor" [(ngModel)]="donator.bloodFactor" name="bloodFactor" class="form-control">
                                                             <option value="0">Escolha o Fator RH</option>
                                                             <option value="+">+</option>
                                                             <option value="-">-</option>
