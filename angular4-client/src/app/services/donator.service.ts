@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
+import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 
 import { Donator } from '../models/donator';
@@ -8,6 +9,7 @@ import { Donator } from '../models/donator';
 export class DonatorService {
     // URL to the Web API
     private donatorsUrl = 'api/donators';
+    private queryUrl = '/search';
     private headers = new Headers({ 'Content-Type': 'application/json' });
 
     constructor(private http: Http) { }
@@ -46,7 +48,7 @@ export class DonatorService {
         cep: string, bloodType: string, bloodFactor: string, aptitude: boolean, sex: string, phone: string,
         color: string, profession: string, nacionality: string, civilState: string, rg: string, cpf: string,
         cnh: string): Promise<Donator> {
-        console.log('Donators service submitted the transaction!');
+        console.log('Donators service submitted the create transaction to the backend!');
         return this.http
             .post(this.donatorsUrl,
             JSON.stringify({
@@ -67,6 +69,15 @@ export class DonatorService {
         return this.http.delete(url, { headers: this.headers })
             .toPromise()
             .then(() => null)
+            .catch(this.handleError);
+    }
+
+    search(firstName: string, lastName: string, mothersName: string, city: string, sex: string,
+        bloodType: string, bloodFactor: string, aptitude: boolean): Promise<Donator[]> {
+        console.log('Submitted search request!');
+        return this.http.get(this.donatorsUrl + this.queryUrl + `?firstName=${firstName}` + `?lastName=${lastName}` +
+            `?mothersName=${mothersName}` + `?city=${city}` + `?sex=${sex}` + `?bloodType=${bloodType}` +
+            `?bloodFactor=${bloodFactor}` + `?aptitude=${aptitude}`).toPromise().then(response => response.json().data as Donator[])
             .catch(this.handleError);
     }
 }
