@@ -20,8 +20,7 @@
                             <th>Excluir</th>
                         </tr>
                     </thead>
-                    <tbody *ngFor="let donator of donators | paginate: { itemsPerPage: 7, currentPage: page }" (click)="onSelect(donator)"
-                        [class.selected]="donator === selecteddonator">
+                    <tbody *ngFor="let donator of donators | paginate: { itemsPerPage: 7, currentPage: page }" (click)="onSelect(donator)" [class.selected]="donator === selecteddonator">
                         <tr>
                             <td class="badge badge-secondary">
                                 {{donator.id}}
@@ -58,6 +57,10 @@
                 </table>
                 <pagination-controls (pageChange)="page = $event"></pagination-controls>
             </div>
+        </div>
+        <div class="card-footer">
+            <button (click)="goBack()" type="reset" class="btn btn-sm btn-danger">
+                <i class="fa fa-ban"></i> Voltar</button>
         </div>
     </div>
 </div>

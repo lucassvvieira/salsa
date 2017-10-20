@@ -15,6 +15,7 @@ export class DonatorService {
     constructor(private http: Http) { }
 
     getDonators(): Promise<Donator[]> {
+        console.log('Gimme all Donators! YUMMY');
         return this.http.get(this.donatorsUrl)
             .toPromise()
             .then(response => response.json().data as Donator[])
@@ -27,6 +28,7 @@ export class DonatorService {
     }
 
     getDonator(id: number): Promise<Donator> {
+        console.log('Asking politely for a specific Donator');
         const url = `${this.donatorsUrl}/${id}`;
         return this.http.get(url)
             .toPromise()
@@ -35,6 +37,7 @@ export class DonatorService {
     }
 
     update(donator: Donator): Promise<Donator> {
+        console.log('Updating fields of donator number:' + donator.id);
         const url = `${this.donatorsUrl}/${donator.id}`;
         return this.http
             .put(url, JSON.stringify(donator), { headers: this.headers })
@@ -65,6 +68,7 @@ export class DonatorService {
     }
 
     delete(id: number): Promise<void> {
+        console.log('Delete request submitted to the backend!');
         const url = `${this.donatorsUrl}/${id}`;
         return this.http.delete(url, { headers: this.headers })
             .toPromise()
@@ -74,7 +78,8 @@ export class DonatorService {
 
     search(firstName: string, lastName: string, mothersName: string, city: string, sex: string,
         bloodType: string, bloodFactor: string, aptitude: boolean): Promise<Donator[]> {
-        console.log('Submitted search request!');
+        console.log('Submitted search request with parameters:');
+        console.log(firstName, lastName, mothersName, city, sex, bloodType, bloodFactor, aptitude);
         return this.http.get(this.donatorsUrl + this.queryUrl + `?firstName=${firstName}` + `?lastName=${lastName}` +
             `?mothersName=${mothersName}` + `?city=${city}` + `?sex=${sex}` + `?bloodType=${bloodType}` +
             `?bloodFactor=${bloodFactor}` + `?aptitude=${aptitude}`).toPromise().then(response => response.json().data as Donator[])

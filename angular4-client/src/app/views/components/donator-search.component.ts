@@ -18,10 +18,10 @@ export class DonatorSearchComponent {
     private donatorService: DonatorService,
     private router: Router,
     private location: Location,
-  ) {this.donator = new Donator();}
+  ) { this.donator = new Donator(); }
 
   goToListing(): void {
-    this.router.navigate(['components/result', this.donator]);
+    this.router.navigate(['components/donator-list', this.donator]);
   }
 
   goBack(): void {

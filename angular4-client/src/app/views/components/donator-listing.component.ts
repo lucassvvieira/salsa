@@ -17,6 +17,7 @@ export class DonatorListComponent implements OnInit {
     rowSelected: boolean;
     donators: Donator[];
     selectedDonator: Donator;
+    searchData: any;
 
     constructor(
         private donatorService: DonatorService,
@@ -26,11 +27,19 @@ export class DonatorListComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
+        console.log('Trying to perform search with object: ');
+        this.searchData = this.route.params.subscribe(params => this.donatorService.search(params.firstName, params.lastName,
+            params.mothersName, params.city, params.sex, params.bloodType, params.bloodFactor, params.aptitude));
+
+        this.donators = this.searchData;
+        /*
         this.route.paramMap
             .switchMap((params: ParamMap) => this.donatorService.search(params.get('donator.firstName'),
                 params.get('donator.lastName'), params.get('donator.mothersName'), params.get('donator.city'),
                 params.get('donator.sex'), params.get('donator.bloodType'), params.get('donator.bloodFactor'),
                 Boolean(params.get('donator.aptitude')).valueOf())).subscribe(donators => this.donators = donators);
+        */
+        console.log('Search done with resulting object: ' + this.donators);
     }
 
     onSelect(donator: Donator): void {
