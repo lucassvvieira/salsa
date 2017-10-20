@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { FormsModule } from '@angular/forms';
-
+import { CommonModule } from '@angular/common';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { ButtonsComponent } from './buttons.component';
 import { CardsComponent } from './cards.component';
 
@@ -26,6 +27,7 @@ import { ComponentsRoutingModule } from './components-routing.module';
 
 // My own components
 import { DonatorFormComponent } from './donator-form.component';
+import { DonatorListComponent } from './donator-listing.component';
 import { DonatorSearchComponent } from './donator-search.component';
 import { DonatorStatisticsComponent } from './donator-statistics.component';
 import { ModelFormComponent } from './model-form.component';
@@ -34,15 +36,18 @@ import { SendResultComponent } from './send-result.component';
 
 @NgModule({
   imports: [
+    CommonModule,
     FormsModule,
     ComponentsRoutingModule,
     BsDropdownModule.forRoot(),
     ModalModule.forRoot(),
     TabsModule,
-    ChartsModule
+    ChartsModule,
+    NgxPaginationModule
   ],
   declarations: [
     DonatorFormComponent,
+    DonatorListComponent,
     DonatorSearchComponent,
     DonatorStatisticsComponent,
     ModelFormComponent,

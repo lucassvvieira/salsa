@@ -8,36 +8,50 @@
                 <table class="table table-striped table-hover table-responsive donators mx-auto">
                     <thead>
                         <tr class="table-light">
-                            <th>id</th>
+                            <th>Registro</th>
                             <th>Nome</th>
-                            <th>Min. Integrantes</th>
-                            <th>Max. Integrantes</th>
-                            <th>Membros</th>
-                            <th>Cargos Associados</th>
+                            <th>Sobrenome</th>
+                            <th>Mãe</th>
+                            <th>Cidade</th>
+                            <th>Tipo sanguíneo</th>
+                            <th>Fator Rh</th>
+                            <th>Aptidão</th>
                             <th>Editar</th>
                             <th>Excluir</th>
                         </tr>
                     </thead>
-                    <tbody *ngFor="let donator of donators | paginate: { itemsPerPage: 5, currentPage: page }" (click)="onSelect(donator)"
+                    <tbody *ngFor="let donator of donators | paginate: { itemsPerPage: 7, currentPage: page }" (click)="onSelect(donator)"
                         [class.selected]="donator === selecteddonator">
                         <tr>
                             <td class="badge badge-secondary">
                                 {{donator.id}}
                             </td>
                             <td>
-                                {{donator.name}}
-                            </td>
-                            <td class="mx-auto">
-                                {{donator.minNumber}}
-                            </td>
-                            <td class="mx-auto">
-                                {{donator.maxNumber}}
+                                {{donator.firstName}}
                             </td>
                             <td>
-                                <button (click)="gotoDetail()" [disabled]="willButtonBeShown(donator)" class="btn btn-warning btn-sm" type="button">Editar</button>
+                                {{donator.lastName}}
                             </td>
                             <td>
-                                <button class="delete" [disabled]="willButtonBeShown(donator)" (click)="delete(donator); $event.stopPropagation()">x</button>
+                                {{donator.mothersName}}
+                            </td>
+                            <td>
+                                {{donator.city}}
+                            </td>
+                            <td>
+                                {{donator.bloodType}}
+                            </td>
+                            <td>
+                                {{donator.bloodFactor}}
+                            </td>
+                            <td>
+                                {{donator.aptitude}}
+                            </td>
+                            <td>
+                                <button (click)="gotoDetail()" class="btn btn-warning btn-sm" type="button">Editar</button>
+                            </td>
+                            <td>
+                                <button class="delete" (click)="delete(donator); $event.stopPropagation()">x</button>
                             </td>
                         </tr>
                     </tbody>

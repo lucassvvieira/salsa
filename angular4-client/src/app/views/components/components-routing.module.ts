@@ -12,6 +12,7 @@ import { TabsComponent } from './tabs.component';
 
 // My own imports
 import { DonatorFormComponent } from './donator-form.component';
+import { DonatorListComponent } from './donator-listing.component';
 import { DonatorSearchComponent } from './donator-search.component';
 import { DonatorStatisticsComponent } from './donator-statistics.component';
 import { ModelFormComponent } from './model-form.component';
@@ -51,6 +52,13 @@ const routes: Routes = [
         component: ModelFormComponent,
         data: {
           title: 'Cadastro de novo Modelo'
+        }
+      },
+      {
+        path: 'donator-list',
+        component: DonatorListComponent,
+        data: {
+          title: 'Lista de Doadores'
         }
       },
       {

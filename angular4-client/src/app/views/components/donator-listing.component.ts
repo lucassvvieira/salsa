@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { NgxPaginationModule } from 'ngx-pagination';
 import 'rxjs/add/operator/switchMap';
 
 import { DonatorService } from '../../services/donator.service';
@@ -12,11 +13,15 @@ import { Donator } from '../../models/donator';
 })
 
 export class DonatorListComponent implements OnInit {
+    page = 1;
+    rowSelected: boolean;
     donators: Donator[];
+    selectedDonator: Donator;
 
     constructor(
         private donatorService: DonatorService,
         private route: ActivatedRoute,
+        private router: Router,
         private location: Location
     ) { }
 
@@ -28,7 +33,32 @@ export class DonatorListComponent implements OnInit {
                 Boolean(params.get('donator.aptitude')).valueOf())).subscribe(donators => this.donators = donators);
     }
 
+    onSelect(donator: Donator): void {
+        if (donator != null) {
+            this.selectedDonator = donator;
+            this.rowSelected = true;
+        } else {
+            this.clearSelection();
+        }
+    }
+
+    clearSelection(): void {
+        this.selectedDonator = null;
+        this.rowSelected = false;
+    }
+
+    gotoDetail(): void {
+        this.router.navigate(['donators/detail', this.selectedDonator.id]);
+    }
+
     goBack(): void {
         this.location.back();
+    }
+
+    delete(donator: Donator): void {
+        this.donatorService.delete(donator.id)
+            .then(() => {
+                this.donators = this.donators.filter(d => d !== donator);
+            });
     }
 }
