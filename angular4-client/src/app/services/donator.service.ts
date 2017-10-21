@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
+import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 
@@ -78,11 +78,28 @@ export class DonatorService {
 
     search(firstName: string, lastName: string, mothersName: string, city: string, sex: string,
         bloodType: string, bloodFactor: string, aptitude: boolean): Promise<Donator[]> {
+
+        const options: URLSearchParams = new URLSearchParams();
+        options.set('firstName', firstName);
+        options.set('lastName', lastName);
+        options.set('mothersName', mothersName);
+        options.set('city', city);
+        options.set('sex', sex);
+        options.set('bloodType', bloodType);
+        options.set('bloodFactor', bloodFactor);
+        options.set('aptitude', Boolean(aptitude).valueOf().toString());
+
         console.log('Submitted search request with parameters:');
-        console.log(firstName, lastName, mothersName, city, sex, bloodType, bloodFactor, aptitude);
+        // console.log(firstName, lastName, mothersName, city, sex, bloodType, bloodFactor, aptitude);
+        console.log(options.getAll);
+
+        return this.http.get(this.donatorsUrl + this.queryUrl,  {search: options} ).toPromise()
+        .then(response => response.json().data as Donator[]).catch(this.handleError);
+        /*
         return this.http.get(this.donatorsUrl + this.queryUrl + `?firstName=${firstName}` + `?lastName=${lastName}` +
             `?mothersName=${mothersName}` + `?city=${city}` + `?sex=${sex}` + `?bloodType=${bloodType}` +
             `?bloodFactor=${bloodFactor}` + `?aptitude=${aptitude}`).toPromise().then(response => response.json().data as Donator[])
             .catch(this.handleError);
+        */
     }
 }

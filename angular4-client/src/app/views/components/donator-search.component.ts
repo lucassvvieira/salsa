@@ -28,11 +28,4 @@ export class DonatorSearchComponent {
     this.location.back()
   }
 
-  /*
-  search(firstName: string, lastName: string, mothersName: string, city: string, sex: string, bloodType: string,
-    bloodFactor: string, aptitude: boolean): void {
-    this.donatorService.search(firstName, lastName, mothersName, city, sex, bloodType, bloodFactor, aptitude)
-    .then(donators => this.donators = donators);
-  }
-  */
 }
