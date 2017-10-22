@@ -24,10 +24,11 @@ public interface DonatorRepository extends JpaRepository<Donator, Long> {
 	long countByBloodTypeAndBloodFactor(String bloodType, String bloodFactor);
 	
 	// Bear with me, I know this sounds ridiculous
-	List<Donator> findByFirstNameAndLastNameAndMothersNameAndCityAndSexAndBloodTypeAndBloodFactorAndAptitude(
+	List<Donator> findByFirstNameAndLastNameAndMothersNameAndCityAndSexAndBloodTypeAndBloodFactorAndAptitudeAllIgnoreCase(
 			String firstName, String lastName, String mothersName, String city, String sex, String bloodType,
 			String bloodFactor, Boolean aptitude);
 	List<Donator> countByFirstNameAndLastNameAndMothersNameAndCityAndSexAndBloodTypeAndBloodFactorAndAptitude(
 			String firstName, String lastName, String mothersName, String city, String sex, String bloodType,
 			String bloodFactor, Boolean aptitude);
+	
 }

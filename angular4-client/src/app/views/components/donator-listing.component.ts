@@ -38,7 +38,7 @@ export class DonatorListComponent implements OnInit {
             .switchMap((params: ParamMap) => this.donatorService.search(params.get('firstName'),
                 params.get('lastName'), params.get('mothersName'), params.get('city'),
                 params.get('sex'), params.get('bloodType'), params.get('bloodFactor'),
-                Boolean(params.get('aptitude')).valueOf())).subscribe(donators => this.donators = donators);
+                params.get('aptitude'))).subscribe(donators => this.donators = donators);
 
         console.log('Search done with resulting object: ' + this.donators);
     }

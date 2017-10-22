@@ -3,9 +3,13 @@ package br.ufes.salsa.salsa.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
+import org.springframework.data.domain.ExampleMatcher.StringMatcher;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,13 +34,54 @@ public class DonatorController extends AbstractController<Donator, DonatorReposi
 		return new ResponseEntity<List<Donator>>(donators, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/result", method = RequestMethod.GET)
-	public ResponseEntity<List<Donator>> search(String firstName, String lastName, String mothersName, String city, String sex, String bloodType,
-			String bloodFactor, Boolean aptitude) {
-		List<Donator> donators = repository.findByFirstNameAndLastNameAndMothersNameAndCityAndSexAndBloodTypeAndBloodFactorAndAptitude(
-				firstName, lastName, mothersName, city, sex, bloodType, bloodFactor, aptitude);
+	@RequestMapping(value = "/search", method = RequestMethod.GET)
+	public ResponseEntity<List<Donator>> search(Donator donator) {
+		ExampleMatcher matcher = ExampleMatcher
+				.matching()
+				.withIgnoreCase()
+				//.withIncludeNullValues()
+				.withIgnoreNullValues()
+				.withStringMatcher(StringMatcher.STARTING);
+		
+		System.out.println(donator.getFirstName());
+		//System.out.println(donator.getLastName().length());
+		
+		Example<Donator> example = Example.of(donator, matcher);
+		
+		System.out.println(example.toString());
+		List<Donator> donators = repository.findAll(example);
+		if(donators.isEmpty()) {
+			System.out.println("Empty response list :(");
+		} else {
+			System.out.println("List not empty!");
+			
+			for(Donator d: donators) {
+				System.out.println(d.getFirstName()+  " "+ d.getLastName());
+			}
+			
+		}
 		return new ResponseEntity<List<Donator>>(donators, HttpStatus.OK);
 	}
+	/*
+	@RequestMapping(value = "/search", method = RequestMethod.GET)
+	public ResponseEntity<List<Donator>> search(String firstName, String lastName, String mothersName, String city, String sex, String bloodType,
+			String bloodFactor, Boolean aptitude) {
+		System.out.println(firstName+"\n"+lastName+"\n"+mothersName+"\n"+city+'\n'+sex+'\n'+bloodType+'\n'+bloodFactor+'\n'+aptitude);
+		List<Donator> donators = repository.findByFirstNameAndLastNameAndMothersNameAndCityAndSexAndBloodTypeAndBloodFactorAndAptitudeAllIgnoreCase(
+				firstName, lastName, mothersName, city, sex, bloodType, bloodFactor, aptitude);
+		if(donators.isEmpty()) {
+			System.out.println("Empty response list :(");
+		} else {
+			System.out.println("List not empty!");
+			
+			for(Donator d: donators) {
+				System.out.println(d.getFirstName() + d.getLastName());
+			}
+			
+		}
+		return new ResponseEntity<List<Donator>>(donators, HttpStatus.OK);
+	}
+	*/
 	
 	@RequestMapping(value = "/statistics", method = RequestMethod.GET)
 	public ResponseEntity<DonatorStats> getStats() {

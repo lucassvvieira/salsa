@@ -23,7 +23,7 @@ public class Donator extends AbstractModel {
 	private String fathersName;
 	
 	// Dates
-	private Date birth;
+	private Date birthDate;
 	private Date lastDonation;
 	private Date registerDate;
 	
@@ -48,7 +48,7 @@ public class Donator extends AbstractModel {
 	private String nacionality;
 	private String civilState;
 	private String rg;
-	private String cpg;
+	private String cpf;
 	private String cnh;
 	
 	// Getters and Setters
@@ -79,11 +79,11 @@ public class Donator extends AbstractModel {
 	public void setFathersName(String fathersName) {
 		this.fathersName = fathersName;
 	}
-	public Date getBirth() {
-		return birth;
+	public Date getBirthDate() {
+		return birthDate;
 	}
-	public void setBirth(Date birth) {
-		this.birth = birth;
+	public void setBirthDate(Date birthDate) {
+		this.birthDate = birthDate;
 	}
 	public Date getLastDonation() {
 		return lastDonation;
@@ -181,11 +181,11 @@ public class Donator extends AbstractModel {
 	public void setRg(String rg) {
 		this.rg = rg;
 	}
-	public String getCpg() {
-		return cpg;
+	public String getCpf() {
+		return cpf;
 	}
-	public void setCpg(String cpg) {
-		this.cpg = cpg;
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
 	}
 	public String getCnh() {
 		return cnh;
