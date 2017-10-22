@@ -81,22 +81,9 @@ export class DonatorService {
     search(firstName: string, lastName: string, mothersName: string, city: string, sex: string,
         bloodType: string, bloodFactor: string, aptitude: string): Promise<Donator[]> {
 
-        /*let params = new HttpParams();
-        params.append('firstName', firstName);
-        params.append('lastName', lastName);
-        params.append('mothersName', mothersName);
-        params.append('city', city);
-        params.append('sex', sex);
-        params.append('bloodType', bloodType);
-        params.append('bloodFactor', bloodFactor);
-        params.append('aptitude', Boolean(aptitude).valueOf().toString());
-*/
-
         console.log('Submitted search request with parameters:');
-        // console.log(firstName, lastName, mothersName, city, sex, bloodType, bloodFactor, aptitude);
-        //console.log(params.getAll);
 
-        const params  = sanitize({
+        const params = sanitize({
             firstName,
             lastName,
             mothersName,
@@ -107,18 +94,9 @@ export class DonatorService {
             aptitude
         });
 
-        console.log("imprime");
-       // console.log(params);
 
-
-
+        console.log(params);
         return this.http.get(this.donatorsUrl + this.queryUrl, { params }).toPromise()
             .then(response => response.json().data as Donator[]).catch(this.handleError);
-        /*
-        return this.http.get(this.donatorsUrl + this.queryUrl + `?firstName=${firstName}` + `?lastName=${lastName}` +
-            `?mothersName=${mothersName}` + `?city=${city}` + `?sex=${sex}` + `?bloodType=${bloodType}` +
-            `?bloodFactor=${bloodFactor}` + `?aptitude=${aptitude}`).toPromise().then(response => response.json().data as Donator[])
-            .catch(this.handleError);
-        */
     }
 }
