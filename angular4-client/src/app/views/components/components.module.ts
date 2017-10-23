@@ -30,6 +30,7 @@ import { DonatorFormComponent } from './donator-form.component';
 import { DonatorListComponent } from './donator-listing.component';
 import { DonatorSearchComponent } from './donator-search.component';
 import { DonatorStatisticsComponent } from './donator-statistics.component';
+import { DonatorDetailsComponent } from './donator-details.component';
 import { ModelFormComponent } from './model-form.component';
 import { SendComponent } from './send.component';
 import { SendResultComponent } from './send-result.component';
@@ -50,6 +51,7 @@ import { SendResultComponent } from './send-result.component';
     DonatorListComponent,
     DonatorSearchComponent,
     DonatorStatisticsComponent,
+    DonatorDetailsComponent,
     ModelFormComponent,
     SendComponent,
     SendResultComponent,

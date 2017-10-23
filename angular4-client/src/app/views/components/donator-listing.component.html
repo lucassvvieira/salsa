@@ -1,7 +1,7 @@
 <div class="col-md-12">
     <div class="card">
         <div class="card-header">
-            <strong>Lista de Doadores</strong>>
+            <strong>Lista de Doadores</strong>
         </div>
         <div class="card-body">
             <div class="row">
@@ -47,7 +47,7 @@
                                 {{donator.aptitude}}
                             </td>
                             <td>
-                                <button (click)="gotoDetail()" class="btn btn-warning btn-sm" type="button">Editar</button>
+                                <button (click)="gotoDetail()" [disabled]="willButtonBeShown(donator)" class="btn btn-warning btn-sm" type="button">Editar</button>
                             </td>
                             <td>
                                 <button class="delete" (click)="delete(donator); $event.stopPropagation()">x</button>

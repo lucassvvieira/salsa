@@ -1,3 +1,4 @@
+import { DonatorDetailsComponent } from './donator-details.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -59,6 +60,13 @@ const routes: Routes = [
         component: DonatorListComponent,
         data: {
           title: 'Lista de Doadores'
+        }
+      },
+      {
+        path: 'donator-detail/:id',
+        component: DonatorDetailsComponent,
+        data: {
+          title: 'Detalhes do Doador'
         }
       },
       {

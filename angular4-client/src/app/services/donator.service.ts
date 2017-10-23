@@ -30,13 +30,20 @@ export class DonatorService {
         return Promise.reject(error.message || error);
     }
 
-    getDonator(id: number): Promise<Donator> {
-        console.log('Asking politely for a specific Donator');
+    getDonator(id: number): Observable<Donator> {
+        console.log('Asking politely for a specific Donator with id: ' + id);
         const url = `${this.donatorsUrl}/${id}`;
+        return this.http.get(url, { headers: this.headers })
+            .map(response => {
+                return response.json() as Donator
+            });
+
+        /*
         return this.http.get(url)
             .toPromise()
             .then(response => response.json().data as Donator)
             .catch(this.handleError);
+            */
     }
 
     update(donator: Donator): Promise<Donator> {

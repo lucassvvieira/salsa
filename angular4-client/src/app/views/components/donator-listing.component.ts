@@ -11,6 +11,7 @@ import { Donator } from '../../models/donator';
 @Component({
     selector: 'app-donator-listing',
     templateUrl: './donator-listing.component.html',
+    styleUrls: ['./donator-listing.component.css']
 })
 
 export class DonatorListComponent implements OnInit {
@@ -28,7 +29,6 @@ export class DonatorListComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        console.log('Trying to perform search with object: ');
         this.route.paramMap
             .subscribe((params: ParamMap) => {
                 this.donators = this.donatorService.search(params.get('firstName'),
@@ -53,8 +53,24 @@ export class DonatorListComponent implements OnInit {
         this.rowSelected = false;
     }
 
+    isRowSelected() {
+        if (this.rowSelected) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    willButtonBeShown(donator: Donator): boolean {
+        if (this.rowSelected && donator === this.selectedDonator) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
     gotoDetail(): void {
-        this.router.navigate(['donators/detail', this.selectedDonator.id]);
+        this.router.navigate(['components/donator-detail', this.selectedDonator.id]);
     }
 
     goBack(): void {
@@ -64,7 +80,8 @@ export class DonatorListComponent implements OnInit {
     delete(donator: Donator): void {
         this.donatorService.delete(donator.id)
             .then(() => {
-                // this.donators = this.donators.filter(d => d !== donator);
+                this.donators = this.donators
+                    .map(donators => donators.filter(d => d !== donator));
             });
     }
 }
