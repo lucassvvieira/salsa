@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs/Observable';
 import { sanitize } from '../helpers/sanitize.helper';
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
@@ -79,9 +80,7 @@ export class DonatorService {
     }
 
     search(firstName: string, lastName: string, mothersName: string, city: string, sex: string,
-        bloodType: string, bloodFactor: string, aptitude: string): Promise<Donator[]> {
-
-        console.log('Submitted search request with parameters:');
+        bloodType: string, bloodFactor: string, aptitude: string): Observable<Donator[]> {
 
         const params = sanitize({
             firstName,
@@ -94,9 +93,11 @@ export class DonatorService {
             aptitude
         });
 
-
-        console.log(params);
-        return this.http.get(this.donatorsUrl + this.queryUrl, { params }).toPromise()
-            .then(response => response.json().data as Donator[]).catch(this.handleError);
+        // console.log('Submitted search request with parameters:');
+        // console.log(params);
+        return this.http.get(this.donatorsUrl + this.queryUrl, { params })
+            .map(response => {
+                return response.json() as Donator[]
+            });
     }
 }

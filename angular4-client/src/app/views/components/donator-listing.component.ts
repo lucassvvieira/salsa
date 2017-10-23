@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs/Observable';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Location } from '@angular/common';
@@ -15,7 +16,7 @@ import { Donator } from '../../models/donator';
 export class DonatorListComponent implements OnInit {
     page = 1;
     rowSelected: boolean;
-    donators: Donator[];
+    donators: Observable<Donator[]>;
     selectedDonator: Donator;
     searchData: any;
 
@@ -26,21 +27,16 @@ export class DonatorListComponent implements OnInit {
         private location: Location
     ) { }
 
-    ngOnInit(): void {
+    ngOnInit() {
         console.log('Trying to perform search with object: ');
-
-        /*
-        this.searchData = this.route.params.subscribe(params => this.donatorService.search(params.firstName, params.lastName,
-            params.mothersName, params.city, params.sex, params.bloodType, params.bloodFactor, params.aptitude));
-        */
-
         this.route.paramMap
-            .switchMap((params: ParamMap) => this.donatorService.search(params.get('firstName'),
-                params.get('lastName'), params.get('mothersName'), params.get('city'),
-                params.get('sex'), params.get('bloodType'), params.get('bloodFactor'),
-                params.get('aptitude'))).subscribe(donators => this.donators = donators);
+            .subscribe((params: ParamMap) => {
+                this.donators = this.donatorService.search(params.get('firstName'),
+                    params.get('lastName'), params.get('mothersName'), params.get('city'),
+                    params.get('sex'), params.get('bloodType'), params.get('bloodFactor'),
+                    params.get('aptitude'))
+            });
 
-        console.log('Search done with resulting object: ' + this.donators);
     }
 
     onSelect(donator: Donator): void {
@@ -68,7 +64,7 @@ export class DonatorListComponent implements OnInit {
     delete(donator: Donator): void {
         this.donatorService.delete(donator.id)
             .then(() => {
-                this.donators = this.donators.filter(d => d !== donator);
+                // this.donators = this.donators.filter(d => d !== donator);
             });
     }
 }
