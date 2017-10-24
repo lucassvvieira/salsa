@@ -1,6 +1,6 @@
 <div class="animated fadeIn">
-    <div class="col-md-12" *ngIf="donator">
-        <div class="card">
+    <div class="col-md-12">
+        <div class="card" *ngIf="donator | async; let donator">
             <div class="card-header">
                 <strong>Dados cadastrais</strong> do doador
             </div>
@@ -43,7 +43,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="form-group col-sm-7">
-                                            <label class="col-md-4 form-control-label" for="text-input">Data de Nascimento</label>
+                                            <label class="col-md-4 form-control-label" for="date-input">Data de Nascimento</label>
                                             <div class="col-md-9">
                                                 <input type="date" id="birthdate" [(ngModel)]="donator.birthDate" name="birthDate" class="form-control" placeholder="birthdate">
                                                 <span class="help-block"></span>
@@ -273,7 +273,7 @@
                 </div>
                 <div class="card-footer">
                     <button (click)="onSubmit()" type="submit" class="btn btn-sm btn-success active">
-                        <i class="fa fa-dot-circle-o"></i> Cadastrar!</button>
+                        <i class="fa fa-dot-circle-o"></i> Atualizar dados</button>
                     <button (click)="goBack()" type="reset" class="btn btn-sm btn-danger">
                         <i class="fa fa-ban"></i> Voltar</button>
                 </div>
