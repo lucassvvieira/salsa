@@ -3,11 +3,11 @@
         <!-- First chart -->
         <div class="card">
             <div class="card-header">
-                Sexo dos doadores
+                Sexo
             </div>
             <div class="card-body">
                 <div class="chart-wrapper">
-                    <canvas baseChart class="chart" [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType"
+                    <canvas baseChart class="chart" [data]="sexChartData" [labels]="sexChartLabels" [chartType]="sexChartType" [colors]="colorsForTwo"
                         (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
                 </div>
             </div>
@@ -15,37 +15,59 @@
         <!-- Second chart -->
         <div class="card">
             <div class="card-header">
-                Aptidão de doadores
+                Aptidão
             </div>
             <div class="card-body">
                 <div class="chart-wrapper">
-                    <canvas baseChart class="chart" [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType" (chartHover)="chartHovered($event)"
-                        (chartClick)="chartClicked($event)"></canvas>
+                    <canvas baseChart class="chart" [data]="aptitudeChartData" [labels]="aptitudeChartLabels" [chartType]="aptitudeChartType"
+                        (chartHover)="chartHovered($event)" [colors]="colorsForTwo" (chartClick)="chartClicked($event)"></canvas>
                 </div>
             </div>
         </div>
         <!-- Third chart-->
         <div class="card">
             <div class="card-header">
-                Tipo sanguíneo de doadores
+                Tipo sanguíneo
             </div>
             <div class="card-body">
                 <div class="chart-wrapper">
-                    <canvas baseChart class="chart" [data]="pie2ChartData" [labels]="pie2ChartLabels" [chartType]="pie2ChartType" (chartHover)="chartHovered($event)"
-                        (chartClick)="chartClicked($event)"></canvas>
+                    <canvas baseChart class="chart" [data]="bloodChartData" [labels]="bloodChartLabels" [chartType]="bloodChartType" (chartHover)="chartHovered($event)"
+                        [colors]="colorsForFour" (chartClick)="chartClicked($event)"></canvas>
                 </div>
             </div>
         </div>
         <!-- Fourth chart-->
         <div class="card">
+            <div class="card-header">
+                Tipo sanguíneo com fator Rh
+            </div>
+            <div class="card-body">
+                <div class="chart-wrapper">
+                    <canvas baseChart class="chart" [data]="bloodChartRhData" [labels]="bloodChartRhLabels" [chartType]="bloodChartRhType" (chartHover)="chartHovered($event)"
+                        [colors]="colorsForEight" (chartClick)="chartClicked($event)"></canvas>
+                </div>
+            </div>
+        </div>
+        <!-- Fifth chart-->
+        <div class="card">
+            <div class="card-header">
+                Fator RH
+            </div>
+            <div class="card-body">
+                <div class="chart-wrapper">
+                    <canvas baseChart class="chart" [data]="rhChartData" [labels]="rhChartLabels" [chartType]="rhChartType" [colors]="colorsForTwo"
+                        (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="card text-white bg-success text-center">
                 <div class="card-header">
-                    Fator RH
+                    <strong>Você sabia?</strong>
                 </div>
                 <div class="card-body">
-                    <div class="chart-wrapper">
-                        <canvas baseChart class="chart" [data]="doughnut2ChartData" [labels]="doughnut2ChartLabels" [chartType]="doughnutChartType"
-                            (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
-                    </div>
+                    <blockquote class="card-bodyquote">
+                        <p>Ao clicar nas legendas dos gráficos, você pode habilitar ou desabilitar a exibição do elemento que clicou!</p>
+                    </blockquote>
                 </div>
             </div>
     </div>

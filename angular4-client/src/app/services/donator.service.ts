@@ -7,31 +7,19 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 
 import { Donator } from '../models/donator';
+import { DonatorStatistics } from '../models/donator-statistics';
 
 @Injectable()
 export class DonatorService {
     // URL to the Web API
     private donatorsUrl = 'api/donators';
     private queryUrl = '/search';
+    private statsUrl = '/statistics';
     private headers = new Headers({ 'Content-Type': 'application/json' });
 
     constructor(private http: Http) { }
 
-    getDonators(): Promise<Donator[]> {
-        console.log('Gimme all Donators! YUMMY');
-        return this.http.get(this.donatorsUrl)
-            .toPromise()
-            .then(response => response.json().data as Donator[])
-            .catch(this.handleError);
-    }
-
-    private handleError(error: any): Promise<any> {
-        console.error('An error has occured', error);
-        return Promise.reject(error.message || error);
-    }
-
     getDonator(id: number): Observable<Donator> {
-        console.log('Asking politely for a specific Donator with id: ' + id);
         const url = `${this.donatorsUrl}/${id}`;
         return this.http.get(url, { headers: this.headers })
             .map(response => {
@@ -39,9 +27,15 @@ export class DonatorService {
             });
     }
 
+    getDonators(): Promise<Donator[]> {
+        return this.http.get(this.donatorsUrl)
+            .toPromise()
+            .then(response => response.json().data as Donator[])
+            .catch(this.handleError);
+    }
+
+
     update(donator: Donator): Promise<Donator> {
-        console.log('Updating fields of donator id -> ' + donator.id);
-        console.log(donator);
         const url = `${this.donatorsUrl}/${donator.id}`;
         return this.http
             .put(url, JSON.stringify(donator), { headers: this.headers })
@@ -55,7 +49,6 @@ export class DonatorService {
         cep: string, bloodType: string, bloodFactor: string, aptitude: boolean, sex: string, phone: string,
         color: string, profession: string, nacionality: string, civilState: string, rg: string, cpf: string,
         cnh: string): Promise<Donator> {
-        console.log('Donators service submitted the create transaction to the backend!');
         return this.http
             .post(this.donatorsUrl,
             JSON.stringify({
@@ -100,5 +93,25 @@ export class DonatorService {
             .map(response => {
                 return response.json() as Donator[]
             });
+    }
+
+    getDonatorStats(): Observable<DonatorStatistics> {
+        return this.http.get(this.donatorsUrl + this.statsUrl, { headers: this.headers })
+            .map(response => {
+                console.log('Service fetched -> ');
+                console.log(response.json());
+                return response.json() as DonatorStatistics
+            });
+        /*
+        .toPromise()
+        .then(response => response.json().data as DonatorStatistics)
+        .catch(this.handleError);
+        */
+
+    }
+
+    private handleError(error: any): Promise<any> {
+        console.error('An error has occured', error);
+        return Promise.reject(error.message || error);
     }
 }

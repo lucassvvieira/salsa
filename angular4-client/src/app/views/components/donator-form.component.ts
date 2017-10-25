@@ -22,7 +22,6 @@ export class DonatorFormComponent {
 
   onSubmit() {
     this.submitted = true;
-    console.log('Button submitted the form register action!');
     this.donatorService.create(
       this.donator.firstName, this.donator.lastName, this.donator.fathersName, this.donator.mothersName,
       this.donator.birthDate, this.donator.registerDate, this.donator.state,
