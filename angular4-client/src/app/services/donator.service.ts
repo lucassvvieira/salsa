@@ -37,22 +37,16 @@ export class DonatorService {
             .map(response => {
                 return response.json() as Donator
             });
-
-        /*
-        return this.http.get(url)
-            .toPromise()
-            .then(response => response.json().data as Donator)
-            .catch(this.handleError);
-            */
     }
 
     update(donator: Donator): Promise<Donator> {
-        console.log('Updating fields of donator number:' + donator.id);
+        console.log('Updating fields of donator id -> ' + donator.id);
+        console.log(donator);
         const url = `${this.donatorsUrl}/${donator.id}`;
         return this.http
             .put(url, JSON.stringify(donator), { headers: this.headers })
             .toPromise()
-            .then(() => donator)
+            .then(() => Donator)
             .catch(this.handleError);
     }
 

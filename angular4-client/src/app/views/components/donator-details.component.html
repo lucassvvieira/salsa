@@ -272,7 +272,8 @@
                     <!--/.row-->
                 </div>
                 <div class="card-footer">
-                    <button (click)="onSubmit()" type="submit" class="btn btn-sm btn-success active">
+                    <button (click)="this.donatorService.update(this.donator); this.location.back();"
+                        type="submit" class="btn btn-sm btn-success active">
                         <i class="fa fa-dot-circle-o"></i> Atualizar dados</button>
                     <button (click)="goBack()" type="reset" class="btn btn-sm btn-danger">
                         <i class="fa fa-ban"></i> Voltar</button>

@@ -31,13 +31,6 @@ export class DonatorDetailsComponent implements OnInit {
             .switchMap((params: ParamMap) => this.donatorService.getDonator(+params.get('id')))
             .subscribe(donator => this.donator = donator);
         */
-        if (this.donator != null) {
-            console.log('Fetched data:');
-            console.log(this.donator);
-        } else {
-            console.log('Fetched null object');
-        }
-
     }
 
     goBack(): void {
@@ -45,7 +38,7 @@ export class DonatorDetailsComponent implements OnInit {
     }
 
     save(): void {
-        // this.donatorService.update(this.donator)
-          //  .then(() => this.goBack());
+         // this.donatorService.update(this.donator as Donator);
+         // this.location.back();
     }
 }
