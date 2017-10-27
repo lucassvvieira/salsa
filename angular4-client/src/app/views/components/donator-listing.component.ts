@@ -19,7 +19,6 @@ export class DonatorListComponent implements OnInit {
     rowSelected: boolean;
     donators: Observable<Donator[]>;
     selectedDonator: Donator;
-    searchData: any;
 
     constructor(
         private donatorService: DonatorService,

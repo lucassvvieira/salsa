@@ -34,6 +34,7 @@ import { DonatorDetailsComponent } from './donator-details.component';
 import { ModelFormComponent } from './model-form.component';
 import { SendComponent } from './send.component';
 import { SendResultComponent } from './send-result.component';
+import { ModelListingComponent } from './model-listing.component';
 
 @NgModule({
   imports: [
@@ -53,6 +54,7 @@ import { SendResultComponent } from './send-result.component';
     DonatorStatisticsComponent,
     DonatorDetailsComponent,
     ModelFormComponent,
+    ModelListingComponent,
     SendComponent,
     SendResultComponent,
     ButtonsComponent,

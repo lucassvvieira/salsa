@@ -1,4 +1,3 @@
-import { DonatorDetailsComponent } from './donator-details.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -16,7 +15,9 @@ import { DonatorFormComponent } from './donator-form.component';
 import { DonatorListComponent } from './donator-listing.component';
 import { DonatorSearchComponent } from './donator-search.component';
 import { DonatorStatisticsComponent } from './donator-statistics.component';
+import { DonatorDetailsComponent } from './donator-details.component';
 import { ModelFormComponent } from './model-form.component';
+import { ModelListingComponent } from './model-listing.component';
 import { SendComponent } from './send.component';
 import { SendResultComponent } from './send-result.component';
 
@@ -49,13 +50,6 @@ const routes: Routes = [
         }
       },
       {
-        path: 'model-form',
-        component: ModelFormComponent,
-        data: {
-          title: 'Cadastro de novo Modelo'
-        }
-      },
-      {
         path: 'donator-list',
         component: DonatorListComponent,
         data: {
@@ -67,6 +61,20 @@ const routes: Routes = [
         component: DonatorDetailsComponent,
         data: {
           title: 'Detalhes do Doador'
+        }
+      },
+      {
+        path: 'model-form',
+        component: ModelFormComponent,
+        data: {
+          title: 'Cadastro de novo Modelo'
+        }
+      },
+      {
+        path: 'model-list',
+        component: ModelListingComponent,
+        data: {
+          title: 'Cadastro de novo Modelo'
         }
       },
       {

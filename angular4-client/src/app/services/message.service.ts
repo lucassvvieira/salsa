@@ -1,6 +1,8 @@
+import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/map'
 
 import { Message } from '../models/message';
 
@@ -12,11 +14,11 @@ export class MessageService {
 
     constructor(private http: Http) { }
 
-    getMessages(): Promise<Message[]> {
-        return this.http.get(this.messagesUrl)
-            .toPromise()
-            .then(response => response.json().data as Message[])
-            .catch(this.handleError);
+    getMessages(): Observable<Message[]> {
+        return this.http.get(this.messagesUrl, { headers: this.headers })
+        .map(response => {
+            return response.json() as Message[]
+        });
     }
 
     private handleError(error: any): Promise<any> {
