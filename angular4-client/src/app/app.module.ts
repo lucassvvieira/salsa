@@ -8,6 +8,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { AppComponent } from './app.component';
 
 import { DonatorService } from './services/donator.service';
+import { MessageService } from './services/message.service';
 
 // Import containers
 import {
@@ -77,6 +78,7 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
   ],
   providers: [
     DonatorService,
+    MessageService,
     {
       provide: LocationStrategy,
       useClass: HashLocationStrategy,

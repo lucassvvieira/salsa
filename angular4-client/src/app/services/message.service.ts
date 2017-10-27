@@ -41,10 +41,10 @@ export class MessageService {
             .catch(this.handleError);
     }
 
-    create(title: string, body: string, sendDate: Date, recipients: number): Promise<Message> {
+    create(title: string, body: string): Promise<Message> {
         return this.http
             .post(this.messagesUrl,
-            JSON.stringify({title: title, body: body, sendDate: sendDate, recipients: recipients}),
+            JSON.stringify({ title: title, body: body }),
             { headers: this.headers })
             .toPromise()
             .then(res => res.json().data as Message)
