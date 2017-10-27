@@ -7,62 +7,39 @@
                     <i class="fa fa-align-justify"></i> Doadores a ser notificados
                 </div>
                 <div class="card-body">
-                    <table class="table table-striped">
+                    <table class="table table-striped table-hover table-responsive donators">
                         <thead>
                             <tr>
+                                <th>Registro</th>
                                 <th>Nome</th>
-                                <th>Data da última doação</th>
-                                <th>Status</th>
+                                <th>Sobrenome</th>
+                                <th>Aptidão</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody *ngFor="let donator of (donators | async) | paginate: { itemsPerPage: 7, currentPage: page }" (click)="onSelect(donator)"
+                            [class.selected]="donator === selectedDonator">
                             <tr>
-                                <td>Yiorgos Avraamu</td>
-                                <td>2012/01/01</td>
+                                <td class="badge badge-secondary">
+                                    {{donator.id}}
+                                </td>
                                 <td>
+                                    {{donator.firstName}}
+                                </td>
+                                <td>
+                                    {{donator.lastName}}
+                                </td>
+                                <td *ngIf="transAptitude(donator.aptitude);else other">
                                     <span class="badge badge-success">Apto</span>
                                 </td>
-                            </tr>
-                            <tr>
-                                <td>Avram Tarasios</td>
-                                <td>2012/02/01</td>
-                                <td>
-                                    <span class="badge badge-danger">Inapto</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Quintin Ed</td>
-                                <td>2012/02/01</td>
-                                <td>
-                                    <span class="badge badge-success">Apto</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Enéas Kwadwo</td>
-                                <td>2012/03/01</td>
-                                <td>
-                                    <span class="badge badge-success">Apto</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Agapetus Tadeas</td>
-                                <td>2012/01/21</td>
-                                <td>
-                                    <span class="badge badge-danger">Inapto</span>
-                                </td>
+                                <ng-template #other>
+                                    <td>
+                                        <span class="badge badge-danger">Inapto</span>
+                                    </td>
+                                </ng-template>
                             </tr>
                         </tbody>
                     </table>
-                    <ul class="pagination">
-                        <li class="page-item"><a class="page-link" href="#">Prev</a></li>
-                        <li class="page-item active">
-                            <a class="page-link" href="#">1</a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">4</a></li>
-                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                    </ul>
+                    <pagination-controls (pageChange)="page = $event"></pagination-controls>
                 </div>
             </div>
         </div>
@@ -77,14 +54,14 @@
                         <label class="col-md-3 form-control-label" for="select">Escolha o modelo de mensagem</label>
                         <div class="col-md-9">
                             <select id="select" name="select" class="form-control">
-                                    <option value="0">Selecione</option>
-                                    <option value="1">Modelo #1</option>
-                                    <option value="2">Modelo #2</option>
-                                    <option value="3">Modelo #3</option>
-                                    <option value="4">Modelo #4</option>
-                                    <option value="5">Modelo #5</option>
-                                    <option value="6">Modelo #6</option>
-                                  </select>
+                                <option value="0">Selecione</option>
+                                <option value="1">Modelo #1</option>
+                                <option value="2">Modelo #2</option>
+                                <option value="3">Modelo #3</option>
+                                <option value="4">Modelo #4</option>
+                                <option value="5">Modelo #5</option>
+                                <option value="6">Modelo #6</option>
+                            </select>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -95,14 +72,16 @@
                     </div>
                     <div class="mx-auto text-center">
                         <button type="button" class="btn btn-success" data-toggle="modal" (click)="previewModal.show()">
-                                    Preview de mensagem
-                                </button>
+                            Preview de mensagem
+                        </button>
                     </div>
                 </div>
                 <div class="card-footer">
-                        <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Enviar mensagens!</button>
-                        <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Cancelar envio</button>
-                    </div>
+                    <button type="submit" class="btn btn-sm btn-primary">
+                        <i class="fa fa-dot-circle-o"></i> Enviar mensagens!</button>
+                    <button (click)="goBack()" type="reset" class="btn btn-sm btn-danger">
+                        <i class="fa fa-ban"></i> Cancelar envio</button>
+                </div>
             </div>
         </div>
     </div>
@@ -114,12 +93,15 @@
             <div class="modal-header">
                 <h4 class="modal-title">Preview de mensagem a ser enviada</h4>
                 <button type="button" class="close" (click)="previewModal.hide()" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             <div class="modal-body">
-                <p><strong>O conteúdo da mensagem, já com a substituição das tags suportadas pelos nomes respectivos do <b>primeiro resultado</b>
-                    da busca será exibido aqui.</strong></p>
+                <p>
+                    <strong>O conteúdo da mensagem, já com a substituição das tags suportadas pelos nomes respectivos do
+                        <b>primeiro resultado</b>
+                        da busca será exibido aqui.</strong>
+                </p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" (click)="previewModal.hide()">Fechar</button>

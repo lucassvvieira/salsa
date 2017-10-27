@@ -20,7 +20,8 @@
                             <th>Excluir</th>
                         </tr>
                     </thead>
-                    <tbody *ngFor="let donator of (donators | async) | paginate: { itemsPerPage: 7, currentPage: page }" (click)="onSelect(donator)" [class.selected]="donator === selectedDonator">
+                    <tbody *ngFor="let donator of (donators | async) | paginate: { itemsPerPage: 7, currentPage: page }" (click)="onSelect(donator)"
+                        [class.selected]="donator === selectedDonator">
                         <tr>
                             <td class="badge badge-secondary">
                                 {{donator.id}}
@@ -43,9 +44,14 @@
                             <td>
                                 {{donator.bloodFactor}}
                             </td>
-                            <td>
-                                {{donator.aptitude}}
+                            <td *ngIf="transAptitude(donator.aptitude);else other">
+                                <span class="badge badge-success">Apto</span>
                             </td>
+                            <ng-template #other>
+                                <td>
+                                    <span class="badge badge-danger">Inapto</span>
+                                </td>
+                            </ng-template>
                             <td>
                                 <button (click)="gotoDetail()" [disabled]="willButtonBeShown(donator)" class="btn btn-warning btn-sm" type="button">Editar</button>
                             </td>

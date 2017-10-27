@@ -68,6 +68,14 @@ export class DonatorListComponent implements OnInit {
         }
     }
 
+    transAptitude(b: boolean) {
+        if (b) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     gotoDetail(): void {
         this.router.navigate(['components/donator-detail', this.selectedDonator.id]);
     }

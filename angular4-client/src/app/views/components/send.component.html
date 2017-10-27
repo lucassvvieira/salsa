@@ -4,8 +4,8 @@
             <div class="card-header">
                 <strong>Escolha as características dos doadores</strong>
             </div>
-            <div class="card-body">
-                <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+            <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                <div class="card-body">
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="card">
@@ -16,39 +16,39 @@
                                     <div class="form-group row">
                                         <label class="col-md-3 form-control-label" for="text-input">Primeiro nome</label>
                                         <div class="col-md-9">
-                                            <input type="text" id="name-input" name="text-input" class="form-control" placeholder="Nome">
+                                            <input type="text" id="firstName" [(ngModel)]="donator.firstName" name="firstName" class="form-control" placeholder="Nome">
                                             <span class="help-block"></span>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-md-3 form-control-label" for="text-input">Sobrenome</label>
                                         <div class="col-md-9">
-                                            <input type="text" id="surname-input" name="text-input" class="form-control" placeholder="Sobrenome">
+                                            <input type="text" id="lastName" [(ngModel)]="donator.lastName" name="lastName" class="form-control" placeholder="Sobrenome">
                                             <span class="help-block"></span>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-md-3 form-control-label" for="text-input">Nome completo da mãe</label>
                                         <div class="col-md-9">
-                                            <input type="text" id="mother-name-input" name="text-input" class="form-control" placeholder="Mãe">
+                                            <input type="text" id="mothersName" [(ngModel)]="donator.mothersName" name="mothersName" class="form-control" placeholder="Mãe">
                                             <span class="help-block"></span>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-md-3 form-control-label" for="text-input">Cidade</label>
                                         <div class="col-md-9">
-                                            <input type="text" id="city-input" name="text-input" class="form-control" placeholder="Cidade">
+                                            <input type="text" id="city" [(ngModel)]="donator.city" name="city" class="form-control" placeholder="Cidade">
                                             <span class="help-block"></span>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-md-3 form-control-label" for="select">Sexo</label>
                                         <div class="col-md-9">
-                                            <select id="sex" name="select" class="form-control">
-                                                                        <option value="0">Escolha o sexo do doador</option>
-                                                                        <option value="masculino">Masculino</option>
-                                                                        <option value="feminino">Feminino</option>
-                                                                      </select>
+                                            <select id="sex" name="sex" [(ngModel)]="donator.sex" class="form-control">
+                                                <option value="">Escolha o sexo do doador</option>
+                                                <option value="masculino">Masculino</option>
+                                                <option value="feminino">Feminino</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -64,23 +64,23 @@
                                     <div class="form-group row">
                                         <label class="col-md-3 form-control-label" for="select">Tipo Sanguíneo</label>
                                         <div class="col-md-9">
-                                            <select id="bloodtype" name="select" class="form-control">
-                                                                                                <option value="0">Escolha o tipo sanguíneo</option>
-                                                                                                <option value="A">A</option>
-                                                                                                <option value="B">B</option>
-                                                                                                <option value="O">O</option>
-                                                                                                <option value="AB">AB</option>
-                                                                                              </select>
+                                            <select id="bloodtype" [(ngModel)]="donator.bloodType" name="bloodType" class="form-control">
+                                                <option value="0">Escolha o tipo sanguíneo</option>
+                                                <option value="A">A</option>
+                                                <option value="B">B</option>
+                                                <option value="O">O</option>
+                                                <option value="AB">AB</option>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-md-3 form-control-label" for="select">Fator RH</label>
                                         <div class="col-md-9">
-                                            <select id="rhFactor" name="select" class="form-control">
-                                                                                                <option value="0">Escolha o Fator RH</option>
-                                                                                                <option value="+">+</option>
-                                                                                                <option value="-">-</option>
-                                                                                              </select>
+                                            <select id="bloodFactor" [(ngModel)]="donator.bloodFactor" name="bloodFactor" class="form-control">
+                                                <option value="0">Escolha o Fator RH</option>
+                                                <option value="+">+</option>
+                                                <option value="-">-</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -94,11 +94,11 @@
                                     <div class="form-group row">
                                         <label class="col-md-3 form-control-label" for="select">Apto para nova doação?</label>
                                         <div class="col-md-9">
-                                            <select id="aptitude" name="select" class="form-control">
-                                                                                                            <option value="0">Aptidão</option>
-                                                                                                            <option value="true">Sim</option>
-                                                                                                            <option value="false">Não</option>
-                                                                                                          </select>
+                                            <select id="aptitude" [(ngModel)]="donator.aptitude" name="aptitude" class="form-control">
+                                                <option value="null">Aptidão</option>
+                                                <option value="true">Sim</option>
+                                                <option value="false">Não</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -106,12 +106,14 @@
                         </div>
                         <!--End of the first row -->
                     </div>
-                </form>
-            </div>
-            <div class="card-footer">
-                <button type="submit" routerLinkActive="active" [routerLink]="['/components/send-result']" class="btn btn-sm btn-success"><i class="fa fa-dot-circle-o"></i> Prosseguir</button>
-                <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Limpar campos</button>
-            </div>
+                </div>
+                <div class="card-footer">
+                    <button (click)="goToResult()" type="button" class="btn btn-primary">
+                        <i class="fa fa-search"></i> Buscar!</button>
+                    <button (click)="goBack()" type="reset" class="btn btn-sm btn-danger">
+                        <i class="fa fa-ban"></i> Voltar</button>
+                </div>
+            </form>
         </div>
     </div>
     <!-- End of the outer card-->
