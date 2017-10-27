@@ -65,7 +65,7 @@ export class ModelListingComponent implements OnInit {
     }
 
     gotoDetail(): void {
-        this.router.navigate(['components/message-detail', this.selectedMessage.id]);
+        this.router.navigate(['components/model-detail', this.selectedMessage.id]);
     }
 
     goBack(): void {

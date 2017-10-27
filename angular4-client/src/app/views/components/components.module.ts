@@ -35,6 +35,7 @@ import { ModelFormComponent } from './model-form.component';
 import { SendComponent } from './send.component';
 import { SendResultComponent } from './send-result.component';
 import { ModelListingComponent } from './model-listing.component';
+import { ModelDetailComponent } from './model-detail.component';
 
 @NgModule({
   imports: [
@@ -55,6 +56,7 @@ import { ModelListingComponent } from './model-listing.component';
     DonatorDetailsComponent,
     ModelFormComponent,
     ModelListingComponent,
+    ModelDetailComponent,
     SendComponent,
     SendResultComponent,
     ButtonsComponent,

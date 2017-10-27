@@ -34,7 +34,6 @@ export class DonatorService {
             .catch(this.handleError);
     }
 
-
     update(donator: Donator): Promise<Donator> {
         const url = `${this.donatorsUrl}/${donator.id}`;
         return this.http

@@ -18,6 +18,7 @@ import { DonatorStatisticsComponent } from './donator-statistics.component';
 import { DonatorDetailsComponent } from './donator-details.component';
 import { ModelFormComponent } from './model-form.component';
 import { ModelListingComponent } from './model-listing.component';
+import { ModelDetailComponent } from './model-detail.component';
 import { SendComponent } from './send.component';
 import { SendResultComponent } from './send-result.component';
 
@@ -75,6 +76,13 @@ const routes: Routes = [
         component: ModelListingComponent,
         data: {
           title: 'Cadastro de novo Modelo'
+        }
+      },
+      {
+        path: 'model-detail/:id',
+        component: ModelDetailComponent,
+        data: {
+          title: 'Editar modelo de Mensagem'
         }
       },
       {
@@ -155,4 +163,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class ComponentsRoutingModule {}
+export class ComponentsRoutingModule { }

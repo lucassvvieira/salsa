@@ -26,11 +26,6 @@ export class DonatorDetailsComponent implements OnInit {
         .subscribe((params: ParamMap) => {
             this.donator = this.donatorService.getDonator(+params.get('id'))
         });
-        /*
-        this.route.paramMap
-            .switchMap((params: ParamMap) => this.donatorService.getDonator(+params.get('id')))
-            .subscribe(donator => this.donator = donator);
-        */
     }
 
     goBack(): void {

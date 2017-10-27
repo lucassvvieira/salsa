@@ -26,12 +26,12 @@ export class MessageService {
         return Promise.reject(error.message || error);
     }
 
-    getMessage(id: number): Promise<Message> {
+    getMessage(id: number): Observable<Message> {
         const url = `${this.messagesUrl}/${id}`;
-        return this.http.get(url)
-            .toPromise()
-            .then(response => response.json().data as Message)
-            .catch(this.handleError);
+        return this.http.get(url, { headers: this.headers })
+        .map(response => {
+            return response.json() as Message
+        });
     }
 
     update(message: Message): Promise<Message> {
