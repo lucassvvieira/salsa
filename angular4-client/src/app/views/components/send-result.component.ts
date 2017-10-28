@@ -1,6 +1,7 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap/modal/modal.component';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/first';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -18,8 +19,10 @@ import { MessageService } from './../../services/message.service';
 export class SendResultComponent implements OnInit {
   page = 1;
   textContent: any;
+  modalText: string;
   rowSelected: boolean;
   messages: Message[];
+  tokenDonator: Donator;
   donators: Observable<Donator[]>;
   selectedDonator: Donator;
   public previewModal;
@@ -30,7 +33,7 @@ export class SendResultComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private location: Location
-  ) { }
+  ) { this.tokenDonator = new Donator }
 
   ngOnInit() {
     this.route.paramMap
@@ -56,8 +59,27 @@ export class SendResultComponent implements OnInit {
 
   updateText(content: Event) {
     this.textContent = content;
-    console.log('Updated text with :');
-    console.log(this.textContent);
+    this.modalText = content.toString();
+
+    this.donators.subscribe(d => {
+      this.tokenDonator.firstName = d[0].firstName;
+      this.tokenDonator.lastName = d[0].lastName;
+      this.tokenDonator.city = d[0].city;
+      this.tokenDonator.bloodFactor = d[0].bloodFactor;
+      this.tokenDonator.bloodType = d[0].bloodType;
+    });
+  }
+
+  applyTags() {
+    const name = /@nome/gi;
+    const city = /@cidade/gi;
+    const bloodFactor = /@fator/gi;
+    const bloodType = /@tipo/gi;
+
+    this.modalText = this.modalText.replace(name, this.tokenDonator.firstName);
+    this.modalText = this.modalText.replace(city, this.tokenDonator.city);
+    this.modalText = this.modalText.replace(bloodFactor, this.tokenDonator.bloodFactor);
+    this.modalText = this.modalText.replace(bloodType, this.tokenDonator.bloodType);
   }
 
   onSelect(donator: Donator): void {
