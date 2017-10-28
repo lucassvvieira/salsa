@@ -7,7 +7,7 @@
                     <i class="fa fa-align-justify"></i> Doadores a ser notificados
                 </div>
                 <div class="card-body">
-                    <table class="table table-striped table-hover table-responsive donators">
+                    <table class="table table-outline mb-0 table-hover table-responsive donators">
                         <thead>
                             <tr>
                                 <th>Registro</th>
@@ -49,25 +49,20 @@
                 <div class="card-header">
                     <strong>Mensagem a ser enviada</strong>
                 </div>
-                <div class="card-body">
+                <div class="card-body messages">
                     <div class="form-group row">
                         <label class="col-md-3 form-control-label" for="select">Escolha o modelo de mensagem</label>
                         <div class="col-md-9">
-                            <select id="select" name="select" class="form-control">
+                            <select id="select" name="message" class="form-control" [(ngModel)]="message" (ngModelChange)="updateText($event)">
                                 <option value="0">Selecione</option>
-                                <option value="1">Modelo #1</option>
-                                <option value="2">Modelo #2</option>
-                                <option value="3">Modelo #3</option>
-                                <option value="4">Modelo #4</option>
-                                <option value="5">Modelo #5</option>
-                                <option value="6">Modelo #6</option>
+                                <option *ngFor="let message of messages" [value]="message.body">{{message.title}}</option>
                             </select>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-md-3 form-control-label" for="textarea-input">Mensagem SMS</label>
+                        <label class="col-md-3 form-control-label" for="textContent">Mensagem SMS</label>
                         <div class="col-md-9">
-                            <textarea id="textarea-input" name="textarea-input" rows="3" class="form-control" placeholder="O texto do modelo SMS cadastrado irá aparecer aqui para permitir edições de última hora"></textarea>
+                            <textarea [(ngModel)]="textContent" id="textContent" name="textContent" rows="5" class="form-control"></textarea>
                         </div>
                     </div>
                     <div class="mx-auto text-center">

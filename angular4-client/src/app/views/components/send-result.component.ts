@@ -7,6 +7,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
 
 import { DonatorService } from '../../services/donator.service';
 import { Donator } from '../../models/donator';
+import { Message } from './../../models/message';
+import { MessageService } from './../../services/message.service';
 
 @Component({
   selector: 'app-send-result',
@@ -15,13 +17,16 @@ import { Donator } from '../../models/donator';
 
 export class SendResultComponent implements OnInit {
   page = 1;
+  textContent: any;
   rowSelected: boolean;
+  messages: Message[];
   donators: Observable<Donator[]>;
   selectedDonator: Donator;
   public previewModal;
 
   constructor(
     private donatorService: DonatorService,
+    private messageService: MessageService,
     private route: ActivatedRoute,
     private router: Router,
     private location: Location
@@ -36,6 +41,9 @@ export class SendResultComponent implements OnInit {
           params.get('aptitude'))
       });
 
+    this.messageService.getMessages().subscribe(messages => {
+      this.messages = messages;
+    })
   }
 
   transAptitude(b: boolean) {
@@ -44,6 +52,12 @@ export class SendResultComponent implements OnInit {
     } else {
       return false;
     }
+  }
+
+  updateText(content: Event) {
+    this.textContent = content;
+    console.log('Updated text with :');
+    console.log(this.textContent);
   }
 
   onSelect(donator: Donator): void {

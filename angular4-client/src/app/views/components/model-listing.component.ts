@@ -28,7 +28,6 @@ export class ModelListingComponent implements OnInit {
     ngOnInit() {
         this.messageService.getMessages().subscribe(messages => {
             this.messages = messages;
-            console.log(this.messages)
         })
         this.rowSelected = false;
     }
