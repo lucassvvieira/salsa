@@ -5,14 +5,14 @@ import java.util.List;
 public class MessageStats {
 	private long messagesDispatched;
 	private long totalMessagesToRecipients;
-	private List<Message> messages;
+	private List<SentMessage> messages;
 	
 	// Constructor
-	public MessageStats(List<Message> messages) {
+	public MessageStats(List<SentMessage> messages) {
 		this.messages = messages;
 		this.messagesDispatched = messages.size();
 		this.totalMessagesToRecipients = 0;
-		for(Message m: messages) {
+		for(SentMessage m: messages) {
 			this.totalMessagesToRecipients += m.getRecipients();
 		}
 		
@@ -31,10 +31,10 @@ public class MessageStats {
 	public void setTotalMessagesToRecipients(long totalMessagesToRecipients) {
 		this.totalMessagesToRecipients = totalMessagesToRecipients;
 	}
-	public List<Message> getMessages() {
+	public List<SentMessage> getMessages() {
 		return messages;
 	}
-	public void setMessages(List<Message> messages) {
+	public void setMessages(List<SentMessage> messages) {
 		this.messages = messages;
 	}
 }

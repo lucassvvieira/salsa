@@ -41,56 +41,26 @@ public class DonatorController extends AbstractController<Donator, DonatorReposi
 				.withIgnoreCase()
 				//.withIncludeNullValues()
 				.withIgnoreNullValues()
-				.withStringMatcher(StringMatcher.STARTING);
+				.withStringMatcher(StringMatcher.STARTING)
+				.withStringMatcher(StringMatcher.ENDING);
 		
-		System.out.println(donator.getFirstName());
-		//System.out.println(donator.getLastName().length());
+		// System.out.println(donator.getFirstName());
+		// System.out.println(donator.getLastName().length());
 		
 		Example<Donator> example = Example.of(donator, matcher);
 		
-		System.out.println(example.toString());
 		List<Donator> donators = repository.findAll(example);
-		if(donators.isEmpty()) {
-			System.out.println("Empty response list :(");
-		} else {
-			System.out.println("List not empty!");
-			
-			for(Donator d: donators) {
-				System.out.println(d.getFirstName()+  " "+ d.getLastName());
-			}
-			
-		}
 		return new ResponseEntity<List<Donator>>(donators, HttpStatus.OK);
 	}
-	/*
-	@RequestMapping(value = "/search", method = RequestMethod.GET)
-	public ResponseEntity<List<Donator>> search(String firstName, String lastName, String mothersName, String city, String sex, String bloodType,
-			String bloodFactor, Boolean aptitude) {
-		System.out.println(firstName+"\n"+lastName+"\n"+mothersName+"\n"+city+'\n'+sex+'\n'+bloodType+'\n'+bloodFactor+'\n'+aptitude);
-		List<Donator> donators = repository.findByFirstNameAndLastNameAndMothersNameAndCityAndSexAndBloodTypeAndBloodFactorAndAptitudeAllIgnoreCase(
-				firstName, lastName, mothersName, city, sex, bloodType, bloodFactor, aptitude);
-		if(donators.isEmpty()) {
-			System.out.println("Empty response list :(");
-		} else {
-			System.out.println("List not empty!");
-			
-			for(Donator d: donators) {
-				System.out.println(d.getFirstName() + d.getLastName());
-			}
-			
-		}
-		return new ResponseEntity<List<Donator>>(donators, HttpStatus.OK);
-	}
-	*/
 	
 	@RequestMapping(value = "/statistics", method = RequestMethod.GET)
 	public ResponseEntity<DonatorStats> getStats() {
 		DonatorStats stats = new DonatorStats();
-		
+
 		// General people number query's
 		stats.setDonatorsNumber(repository.count());
-		stats.setMaleNumber(repository.countBySex("male"));
-		stats.setFemaleNumber(repository.countBySex("female"));
+		stats.setMaleNumber(repository.countBySex("masculino"));
+		stats.setFemaleNumber(repository.countBySex("feminino"));
 		
 		// Blood numbers
 		stats.setaPlusNumber(repository.countByBloodTypeAndBloodFactor("A", "+"));
@@ -106,9 +76,33 @@ public class DonatorController extends AbstractController<Donator, DonatorReposi
 		stats.setAptNumber(repository.countByAptitude(true));
 		stats.setUnaptNumber(repository.countByAptitude(false));
 		
+		/*
+		System.out.println("Doadores -> " + stats.getDonatorsNumber());
+		System.out.println("Homens -> " + stats.getMaleNumber());
+		System.out.println("Mulheres -> " + stats.getFemaleNumber());
+		System.out.println("Sangue A+ -> " + stats.getaPlusNumber());
+		System.out.println("Sangue A- -> " + stats.getaMinusNumber());
+		System.out.println("Sangue B+ -> " + stats.getbPlusNumber());
+		System.out.println("Sangue B- -> " + stats.getbMinusNumber());
+		System.out.println("Sangue O+ -> " + stats.getoPlusNumber());
+		System.out.println("Sangue O- -> " + stats.getoMinusNumber());
+		System.out.println("Sangue AB+ -> " + stats.getAbPlusNumber());
+		System.out.println("Sangue AB- -> " + stats.getAbMinusNumber());
+		*/
+		
 		return new ResponseEntity<DonatorStats>(stats, HttpStatus.OK);
 	}
 	
+	
+	@Override
+	@RequestMapping(method=RequestMethod.GET, value="/{id}")
+	public ResponseEntity<Donator> findOne(@PathVariable("id") Long id) {
+		Donator d = repository.findOne(id);
+		if (d != null) {
+			return new ResponseEntity<Donator>(d, HttpStatus.OK);
+		}
+		return new ResponseEntity<Donator>(HttpStatus.NOT_FOUND);
+	}
 	
 	@RequestMapping(value = "", method = RequestMethod.POST)
 	public ResponseEntity<Donator> save(@RequestBody Donator d) {
@@ -127,7 +121,7 @@ public class DonatorController extends AbstractController<Donator, DonatorReposi
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Donator> updateDonator(@PathVariable Long id, @RequestBody Donator donator) {
+	public ResponseEntity<Donator> updateDonator(@PathVariable("id") Long id, @RequestBody Donator donator) {
 		Donator d = repository.findOne(id);
 		if (d == null || d.getId() != donator.getId()) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

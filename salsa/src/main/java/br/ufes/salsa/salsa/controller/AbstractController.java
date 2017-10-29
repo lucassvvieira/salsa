@@ -15,14 +15,16 @@ public abstract class AbstractController<T, T_Repository extends JpaRepository> 
 	@Autowired
 	protected T_Repository repository;
 	
+	/*
 	@RequestMapping(method=RequestMethod.GET, value="")
 	public List<T> listAll() {
 		return repository.findAll();
-	}
+	} */
 	
 	@RequestMapping(method=RequestMethod.GET, value="/{id}")
 	public ResponseEntity<T> findOne(@PathVariable("id") Long id) {
 		T var = (T) repository.findOne(id);
+		System.out.println(var.toString());
 		if (var != null) {
 			return new ResponseEntity<T>(var, HttpStatus.OK);
 		}
