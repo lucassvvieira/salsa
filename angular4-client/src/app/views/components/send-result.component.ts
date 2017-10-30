@@ -41,7 +41,7 @@ export class SendResultComponent implements OnInit {
         this.donators = this.donatorService.search(params.get('firstName'),
           params.get('lastName'), params.get('mothersName'), params.get('city'),
           params.get('sex'), params.get('bloodType'), params.get('bloodFactor'),
-          params.get('aptitude'))
+          params.get('aptitude'));
       });
 
     this.messageService.getMessages().subscribe(messages => {
@@ -76,10 +76,12 @@ export class SendResultComponent implements OnInit {
     const bloodFactor = /@fator/gi;
     const bloodType = /@tipo/gi;
 
-    this.modalText = this.modalText.replace(name, this.tokenDonator.firstName);
-    this.modalText = this.modalText.replace(city, this.tokenDonator.city);
-    this.modalText = this.modalText.replace(bloodFactor, this.tokenDonator.bloodFactor);
-    this.modalText = this.modalText.replace(bloodType, this.tokenDonator.bloodType);
+    if (this.tokenDonator.firstName !== undefined) {
+      this.modalText = this.modalText.replace(name, this.tokenDonator.firstName);
+      this.modalText = this.modalText.replace(city, this.tokenDonator.city);
+      this.modalText = this.modalText.replace(bloodFactor, this.tokenDonator.bloodFactor);
+      this.modalText = this.modalText.replace(bloodType, this.tokenDonator.bloodType);
+    }
   }
 
   onSelect(donator: Donator): void {

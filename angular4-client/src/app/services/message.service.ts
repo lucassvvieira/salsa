@@ -2,14 +2,17 @@ import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
-import 'rxjs/add/operator/map'
+import 'rxjs/add/operator/map';
 
 import { Message } from '../models/message';
+import { SentMessage } from '../models/sent-message';
+import { MessageStatistics } from '../models/message-statistics';
 
 @Injectable()
 export class MessageService {
     // URL to the Web API
     private messagesUrl = 'api/messages';
+    private statsUrl = '/statistics';
     private headers = new Headers({ 'Content-Type': 'application/json' });
 
     constructor(private http: Http) { }
@@ -59,5 +62,14 @@ export class MessageService {
             .toPromise()
             .then(() => null)
             .catch(this.handleError);
+    }
+
+    getMessageStats(): Observable<MessageStatistics> {
+        return this.http.get(this.messagesUrl + this.statsUrl, { headers: this.headers })
+            .map(response => {
+                console.log('Service fetched -> ');
+                console.log(response.json());
+                return response.json() as MessageStatistics
+            });
     }
 }

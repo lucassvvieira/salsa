@@ -97,16 +97,8 @@ export class DonatorService {
     getDonatorStats(): Observable<DonatorStatistics> {
         return this.http.get(this.donatorsUrl + this.statsUrl, { headers: this.headers })
             .map(response => {
-                console.log('Service fetched -> ');
-                console.log(response.json());
                 return response.json() as DonatorStatistics
             });
-        /*
-        .toPromise()
-        .then(response => response.json().data as DonatorStatistics)
-        .catch(this.handleError);
-        */
-
     }
 
     private handleError(error: any): Promise<any> {
