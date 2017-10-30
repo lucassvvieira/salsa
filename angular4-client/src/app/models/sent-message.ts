@@ -1,7 +1,6 @@
 export class SentMessage {
     id: number;
-    title: string;
     body: string;
-    sendDate: Date;
+    sendingDate: Date;
     recipients: number;
 }

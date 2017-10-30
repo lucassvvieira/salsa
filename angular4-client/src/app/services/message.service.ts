@@ -15,6 +15,7 @@ export class MessageService {
     private messagesUrl = 'api/messages';
     private statsUrl = '/statistics';
     private sendingUrl = '/send'
+    private sentUrl = '/sent'
     private headers = new Headers({ 'Content-Type': 'application/json' });
 
     constructor(private http: Http) { }
@@ -23,6 +24,13 @@ export class MessageService {
         return this.http.get(this.messagesUrl, { headers: this.headers })
             .map(response => {
                 return response.json() as Message[]
+            });
+    }
+
+    getSentMessages(): Observable<SentMessage[]> {
+        return this.http.get(this.messagesUrl + this.sentUrl, { headers: this.headers })
+            .map(response => {
+                return response.json() as SentMessage[]
             });
     }
 
@@ -79,12 +87,12 @@ export class MessageService {
         For future reference: this is the most fucked up idea I came up with in this entire project.
         Sorry, that was no other way. Everything else failed.
         See, I'm sending the donator's search parameters the user submitted so the backend can make a second search query
-        to get the same donator shown at the view. And you see the complement argument here, yes? Actually, this is the
+        to get the same donators shown at the view. And you see the complement argument here, yes? Actually, this is the
         MESSAGE BODY we are going go send. So, I'm sending something that looks like a Donator, but actually isn't.
         Also, the return is bogus.
     */
     send(firstName: string, lastName: string, mothersName: string, city: string, sex: string,
-        bloodType: string, bloodFactor: string, aptitude: string, complement: string): Promise<Message> {
+        bloodType: string, bloodFactor: string, aptitude: string, complement: string): Promise<void> {
 
         const params = sanitize({
             firstName,
@@ -98,17 +106,9 @@ export class MessageService {
             complement
         });
 
-        console.log('Submitted sending request with parameters:');
-        console.log(params);
         return this.http.post(this.messagesUrl + this.sendingUrl, params, { headers: this.headers })
             .toPromise()
-            .then(res => res.json().data as Message)
+            .then(() => null)
             .catch(this.handleError);
-        /*
-        return this.http.get(this.messagesUrl + this.sendingUrl, { params })
-            .map(response => {
-                return response.json() as Message
-            });
-        */
     }
 }

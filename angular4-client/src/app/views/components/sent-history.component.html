@@ -1,0 +1,42 @@
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+            <strong>Histórico de envios de mensagens SMS</strong>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <table class="table table-outline mb-0 table-hover table-responsive sentMessages mx-auto">
+                    <thead>
+                        <tr class="table-light">
+                            <th>Registro</th>
+                            <th>Corpo</th>
+                            <th>Data de Envio</th>
+                            <th>Número de destinatários</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let sentMessage of sentMessages | paginate: { itemsPerPage: 7, currentPage: page }" [class.selected]="sentMessage === selectedMessage">
+                        <tr>
+                            <td class="badge badge-secondary">
+                                {{sentMessage.id}}
+                            </td>
+                            <td>
+                                {{sentMessage.body}}
+                            </td>
+                            <td>
+                                {{sentMessage.sendingDate | date: 'dd/MM/yyyy'}}
+                            </td>
+                            <td>
+                                {{sentMessage.recipients}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <pagination-controls (pageChange)="page = $event"></pagination-controls>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button (click)="goBack()" type="reset" class="btn btn-sm btn-danger">
+                <i class="fa fa-ban"></i> Voltar</button>
+        </div>
+    </div>
+</div>

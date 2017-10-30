@@ -21,6 +21,7 @@ import { ModelListingComponent } from './model-listing.component';
 import { ModelDetailComponent } from './model-detail.component';
 import { SendComponent } from './send.component';
 import { SendResultComponent } from './send-result.component';
+import { SentHistoryComponent } from './sent-history.component';
 
 const routes: Routes = [
   {
@@ -97,6 +98,13 @@ const routes: Routes = [
         component: SendResultComponent,
         data: {
           title: 'Resultado do filtro de doadores'
+        }
+      },
+      {
+        path: 'sent',
+        component: SentHistoryComponent,
+        data: {
+          title: 'Histórico de envios de mensagens'
         }
       },
       {

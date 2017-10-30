@@ -34,6 +34,7 @@ import { DonatorDetailsComponent } from './donator-details.component';
 import { ModelFormComponent } from './model-form.component';
 import { SendComponent } from './send.component';
 import { SendResultComponent } from './send-result.component';
+import { SentHistoryComponent } from './sent-history.component';
 import { ModelListingComponent } from './model-listing.component';
 import { ModelDetailComponent } from './model-detail.component';
 
@@ -59,6 +60,7 @@ import { ModelDetailComponent } from './model-detail.component';
     ModelDetailComponent,
     SendComponent,
     SendResultComponent,
+    SentHistoryComponent,
     ButtonsComponent,
     CardsComponent,
     FormsComponent,

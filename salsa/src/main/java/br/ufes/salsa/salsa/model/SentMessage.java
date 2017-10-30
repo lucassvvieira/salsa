@@ -22,14 +22,17 @@ public class SentMessage {
 	private long recipients;
 	private String body;
 	
+	public SentMessage() {
+	}
 	
 	public SentMessage(Date sendingDate, long recipients, String body) {
-		super();
 		this.sendingDate = sendingDate;
 		this.recipients = recipients;
 		this.body = body;
 	}
-	
+	public Long getId() {
+		return id;
+	}
 	public String getBody() {
 		return body;
 	}

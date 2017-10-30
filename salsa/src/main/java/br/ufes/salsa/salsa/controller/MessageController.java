@@ -1,10 +1,5 @@
 package br.ufes.salsa.salsa.controller;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.temporal.TemporalAdjusters;
 import java.util.Date;
 import java.util.List;
 
@@ -42,6 +37,12 @@ public class MessageController extends AbstractController<Message, MessageReposi
 	public ResponseEntity<List<Message>> index() {
 		List<Message> messages = repository.findAll();
 		return new ResponseEntity<List<Message>>(messages, HttpStatus.OK);
+	}
+	
+	@RequestMapping(method=RequestMethod.GET, value="/sent")
+	public ResponseEntity<List<SentMessage>> getSentData() {
+		List<SentMessage> messages = sentRepository.findAll();
+		return new ResponseEntity<List<SentMessage>>(messages, HttpStatus.OK);
 	}
 	
 	@RequestMapping(value = "/statistics", method = RequestMethod.GET)
