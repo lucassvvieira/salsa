@@ -1,10 +1,17 @@
 package br.ufes.salsa.salsa.controller;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.temporal.TemporalAdjusters;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
+import org.springframework.data.domain.ExampleMatcher.StringMatcher;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,9 +20,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-
+import br.ufes.salsa.salsa.model.Donator;
 import br.ufes.salsa.salsa.model.Message;
 import br.ufes.salsa.salsa.model.MessageStats;
+import br.ufes.salsa.salsa.model.SentMessage;
+import br.ufes.salsa.salsa.repository.DonatorRepository;
 import br.ufes.salsa.salsa.repository.MessageRepository;
 import br.ufes.salsa.salsa.repository.SentMessageRepository;
 
@@ -26,6 +35,8 @@ public class MessageController extends AbstractController<Message, MessageReposi
 	private MessageRepository repository;
 	@Autowired
 	private SentMessageRepository sentRepository;
+	@Autowired
+	private DonatorRepository donatorRepository;
 	
 	@RequestMapping(method=RequestMethod.GET, value="")
 	public ResponseEntity<List<Message>> index() {
@@ -49,6 +60,34 @@ public class MessageController extends AbstractController<Message, MessageReposi
 		return new ResponseEntity<MessageStats>(stats, HttpStatus.OK);
 	}
 	*/
+	
+	@RequestMapping(value = "/send", method = RequestMethod.POST)
+	public ResponseEntity<Message> send(@RequestBody Donator donator) {
+		ExampleMatcher matcher = ExampleMatcher
+				.matching()
+				.withIgnoreCase()
+				//.withIncludeNullValues()
+				.withIgnoreNullValues()
+				.withStringMatcher(StringMatcher.EXACT);
+				//.withStringMatcher(StringMatcher.CONTAINING);
+		
+		// We'll save here the real message body and then we'll clear the complement
+		// from the original object, since it's not real anyways
+		String messageBody = donator.getComplement();
+		donator.setComplement(null);
+		
+		// Then we'll search for the donators that match the user's options
+		Example<Donator> example = Example.of(donator, matcher);
+		List<Donator> donators = donatorRepository.findAll(example);
+		
+		// Creating the SentMessage object so we can store at the DB
+		Date date = new Date();
+		SentMessage sentMessage = new SentMessage(date, donators.size(), messageBody);
+		sentRepository.save(sentMessage);
+		
+		// Then we send the messages...
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
 	
 	@RequestMapping(value = "", method = RequestMethod.POST)
 	public ResponseEntity<Message> save(@RequestBody Message m) {

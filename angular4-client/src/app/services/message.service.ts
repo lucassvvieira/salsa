@@ -21,9 +21,9 @@ export class MessageService {
 
     getMessages(): Observable<Message[]> {
         return this.http.get(this.messagesUrl, { headers: this.headers })
-        .map(response => {
-            return response.json() as Message[]
-        });
+            .map(response => {
+                return response.json() as Message[]
+            });
     }
 
     private handleError(error: any): Promise<any> {
@@ -34,9 +34,9 @@ export class MessageService {
     getMessage(id: number): Observable<Message> {
         const url = `${this.messagesUrl}/${id}`;
         return this.http.get(url, { headers: this.headers })
-        .map(response => {
-            return response.json() as Message
-        });
+            .map(response => {
+                return response.json() as Message
+            });
     }
 
     update(message: Message): Promise<Message> {
@@ -84,7 +84,7 @@ export class MessageService {
         Also, the return is bogus.
     */
     send(firstName: string, lastName: string, mothersName: string, city: string, sex: string,
-        bloodType: string, bloodFactor: string, aptitude: string, complement: string): Observable<Message> {
+        bloodType: string, bloodFactor: string, aptitude: string, complement: string): Promise<Message> {
 
         const params = sanitize({
             firstName,
@@ -100,9 +100,15 @@ export class MessageService {
 
         console.log('Submitted sending request with parameters:');
         console.log(params);
+        return this.http.post(this.messagesUrl + this.sendingUrl, params, { headers: this.headers })
+            .toPromise()
+            .then(res => res.json().data as Message)
+            .catch(this.handleError);
+        /*
         return this.http.get(this.messagesUrl + this.sendingUrl, { params })
             .map(response => {
                 return response.json() as Message
             });
+        */
     }
 }

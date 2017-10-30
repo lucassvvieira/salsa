@@ -41,14 +41,13 @@ public class DonatorController extends AbstractController<Donator, DonatorReposi
 				.withIgnoreCase()
 				//.withIncludeNullValues()
 				.withIgnoreNullValues()
-				.withStringMatcher(StringMatcher.STARTING)
-				.withStringMatcher(StringMatcher.ENDING);
+				.withStringMatcher(StringMatcher.EXACT);
+				//.withStringMatcher(StringMatcher.CONTAINING);
 		
-		// System.out.println(donator.getFirstName());
+		// System.out.println(donator.getBloodFactor());
 		// System.out.println(donator.getLastName().length());
 		
 		Example<Donator> example = Example.of(donator, matcher);
-		
 		List<Donator> donators = repository.findAll(example);
 		return new ResponseEntity<List<Donator>>(donators, HttpStatus.OK);
 	}

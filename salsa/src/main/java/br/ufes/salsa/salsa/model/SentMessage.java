@@ -20,15 +20,16 @@ public class SentMessage {
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	private Date sendingDate;
 	private long recipients;
-	private String title;
 	private String body;
 	
-	public String getTitle() {
-		return title;
+	
+	public SentMessage(Date sendingDate, long recipients, String body) {
+		super();
+		this.sendingDate = sendingDate;
+		this.recipients = recipients;
+		this.body = body;
 	}
-	public void setTitle(String title) {
-		this.title = title;
-	}
+	
 	public String getBody() {
 		return body;
 	}
