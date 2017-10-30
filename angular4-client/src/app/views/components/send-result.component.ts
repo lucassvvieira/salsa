@@ -19,6 +19,8 @@ import { MessageService } from './../../services/message.service';
 export class SendResultComponent implements OnInit {
   page = 1;
   textContent: any;
+  messageId: number;
+  sendingParams: string[];
   modalText: string;
   rowSelected: boolean;
   messages: Message[];
@@ -33,7 +35,11 @@ export class SendResultComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private location: Location
-  ) { this.tokenDonator = new Donator }
+  ) {
+    this.tokenDonator = new Donator;
+    this.sendingParams = new Array<string>();
+    this.messageId = 0;
+  }
 
   ngOnInit() {
     this.route.paramMap
@@ -42,11 +48,17 @@ export class SendResultComponent implements OnInit {
           params.get('lastName'), params.get('mothersName'), params.get('city'),
           params.get('sex'), params.get('bloodType'), params.get('bloodFactor'),
           params.get('aptitude'));
+
+        this.sendingParams.push(params.get('firstName'), params.get('lastName'),
+          params.get('mothersName'), params.get('city'),
+          params.get('sex'), params.get('bloodType'), params.get('bloodFactor'),
+          params.get('aptitude'));
       });
 
     this.messageService.getMessages().subscribe(messages => {
       this.messages = messages;
     })
+
   }
 
   transAptitude(b: boolean) {
@@ -68,6 +80,18 @@ export class SendResultComponent implements OnInit {
       this.tokenDonator.bloodFactor = d[0].bloodFactor;
       this.tokenDonator.bloodType = d[0].bloodType;
     });
+  }
+
+  updateModelId(id: number) {
+    console.log('Selected model with id -> ' + id);
+  }
+
+  send() {
+    this.sendingParams.push(this.textContent);
+    // I'm sorry
+    this.messageService.send(this.sendingParams[0], this.sendingParams[1], this.sendingParams[2],
+      this.sendingParams[3], this.sendingParams[4], this.sendingParams[5], this.sendingParams[6],
+      this.sendingParams[7], this.sendingParams[8]);
   }
 
   applyTags() {

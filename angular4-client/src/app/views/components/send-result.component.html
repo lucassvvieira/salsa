@@ -59,7 +59,9 @@
                         <div class="col-md-9">
                             <select id="select" name="message" class="form-control" [(ngModel)]="message" (ngModelChange)="updateText($event)">
                                 <option value="">Selecione</option>
-                                <option *ngFor="let message of messages" [value]="message.body">{{message.title}}</option>
+                                <ng-container *ngFor="let message of messages" (change)="updateModelId(message.id)">
+                                    <option [ngValue]="message" [value]="message.body">{{message.title}}</option>
+                                </ng-container>
                             </select>
                         </div>
                     </div>
@@ -76,7 +78,7 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-sm btn-primary">
+                    <button (click)="send();goBack()" type="submit" class="btn btn-sm btn-primary">
                         <i class="fa fa-dot-circle-o"></i> Enviar mensagens!</button>
                     <button (click)="goBack()" type="reset" class="btn btn-sm btn-danger">
                         <i class="fa fa-ban"></i> Cancelar envio</button>
