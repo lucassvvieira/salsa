@@ -53,10 +53,10 @@
                                 </td>
                             </ng-template>
                             <td>
-                                <button (click)="gotoDetail()" [disabled]="willButtonBeShown(donator)" class="btn btn-warning btn-sm" type="button">Editar</button>
+                                <button (click)="gotoDetail()" [disabled]="willButtonBeShown(donator)" class="btn btn-warning btn-sm fa fa-wrench fa-lg mt-1" type="button"></button>
                             </td>
                             <td>
-                                <button class="delete" (click)="delete(donator); $event.stopPropagation()">x</button>
+                                <button class="btn btn-danger btn-sm fa fa-trash fa-lg mt-1" [disabled]="willButtonBeShown(donator)"  (click)="delete(donator); $event.stopPropagation()"></button>
                             </td>
                         </tr>
                     </tbody>

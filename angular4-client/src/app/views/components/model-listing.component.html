@@ -27,10 +27,10 @@
                                 {{message.body}}
                             </td>
                             <td>
-                                <button (click)="gotoDetail()" [disabled]="willButtonBeShown(message)" class="btn btn-warning btn-sm" type="button">Editar</button>
+                                <button (click)="gotoDetail()" [disabled]="willButtonBeShown(message)" class="btn btn-warning btn-sm btn-sm fa fa-wrench fa-lg mt-1" type="button"></button>
                             </td>
                             <td>
-                                <button class="delete" (click)="delete(message); $event.stopPropagation()">x</button>
+                                <button class="btn btn-danger btn-sm fa fa-trash fa-lg mt-1" [disabled]="willButtonBeShown(message)" (click)="delete(message); $event.stopPropagation()"></button>
                             </td>
                         </tr>
                     </tbody>
