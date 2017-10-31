@@ -5,7 +5,8 @@ import { DonatorService } from '../../services/donator.service';
 
 @Component({
   selector: 'app-donator-stats',
-  templateUrl: 'donator-statistics.component.html'
+  templateUrl: 'donator-statistics.component.html',
+  styleUrls: ['./donator-statistics.component.css']
 })
 
 export class DonatorStatisticsComponent implements OnInit {

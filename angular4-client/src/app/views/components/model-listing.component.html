@@ -1,7 +1,14 @@
 <div class="col-md-12">
     <div class="card">
         <div class="card-header">
-            <strong>Lista de Modelos de Mensagem</strong>
+            <div class="tooltips" href="#">
+                <strong>Lista de modelos de mensagem
+                    <div class="fa fa-question-circle fa-lg mt-2"></div>
+                </strong>
+                <span>É preciso clicar no modelo para habilitar a edição e exclusão!
+                    <div class="fa fa-smile-o fa-lg mt-1"></div>
+                </span>
+            </div>
         </div>
         <div class="card-body">
             <div class="row">
@@ -27,7 +34,8 @@
                                 {{message.body}}
                             </td>
                             <td>
-                                <button (click)="gotoDetail()" [disabled]="willButtonBeShown(message)" class="btn btn-warning btn-sm btn-sm fa fa-wrench fa-lg mt-1" type="button"></button>
+                                <button (click)="gotoDetail()" [disabled]="willButtonBeShown(message)" class="btn btn-warning btn-sm btn-sm fa fa-wrench fa-lg mt-1"
+                                    type="button"></button>
                             </td>
                             <td>
                                 <button class="btn btn-danger btn-sm fa fa-trash fa-lg mt-1" [disabled]="willButtonBeShown(message)" (click)="delete(message); $event.stopPropagation()"></button>

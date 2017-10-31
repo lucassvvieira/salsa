@@ -8,6 +8,7 @@ import { Donator } from '../../models/donator';
 
 @Component({
   templateUrl: 'donator-search.component.html',
+  styleUrls: ['./donator-search.component.css'],
   providers: [DonatorService]
 })
 

@@ -8,7 +8,8 @@ import { Donator } from '../../models/donator';
 
 @Component({
   selector: 'app-send',
-  templateUrl: 'send.component.html'
+  templateUrl: 'send.component.html',
+  styleUrls: ['./send.component.css']
 })
 
 export class SendComponent {
