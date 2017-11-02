@@ -14,6 +14,8 @@ public interface DonatorRepository extends JpaRepository<Donator, Long> {
 	List<Donator> findByAptitude(Boolean aptitude);
 	long countByAptitude(Boolean aptitude);
 	
+	long countByAptitudeAndSex(Boolean aptitude, String sex );
+	
 	List<Donator> findByBloodType(String bloodType);
 	long countByBloodType(String bloodType);
 

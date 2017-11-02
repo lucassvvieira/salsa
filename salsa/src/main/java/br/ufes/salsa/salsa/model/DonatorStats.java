@@ -20,6 +20,10 @@ public class DonatorStats {
 	// Aptitude-related numbers
 	private long aptNumber;
 	private long unaptNumber;
+	private long maleAptNumber;
+	private long maleUnaptNumber;
+	private long femaleAptNumber;
+	private long femaleUnaptNumber;
 	
 	// Public constructor
 	public DonatorStats() {
@@ -36,6 +40,10 @@ public class DonatorStats {
 		this.oMinusNumber = 0;
 		this.aptNumber = 0;
 		this.unaptNumber = 0;
+		this.maleAptNumber = 0;
+		this.maleUnaptNumber = 0;
+		this.femaleAptNumber = 0;
+		this.femaleUnaptNumber = 0;
 	}
 	
 	// Getters and Setters
@@ -116,5 +124,29 @@ public class DonatorStats {
 	}
 	public void setUnaptNumber(long unaptNumber) {
 		this.unaptNumber = unaptNumber;
+	}
+	public long getMaleAptNumber() {
+		return maleAptNumber;
+	}
+	public void setMaleAptNumber(long maleAptNumber) {
+		this.maleAptNumber = maleAptNumber;
+	}
+	public long getMaleUnaptNumber() {
+		return maleUnaptNumber;
+	}
+	public void setMaleUnaptNumber(long maleUnaptNumber) {
+		this.maleUnaptNumber = maleUnaptNumber;
+	}
+	public long getFemaleAptNumber() {
+		return femaleAptNumber;
+	}
+	public void setFemaleAptNumber(long femaleAptNumber) {
+		this.femaleAptNumber = femaleAptNumber;
+	}
+	public long getFemaleUnaptNumber() {
+		return femaleUnaptNumber;
+	}
+	public void setFemaleUnaptNumber(long femaleUnaptNumber) {
+		this.femaleUnaptNumber = femaleUnaptNumber;
 	}
 }

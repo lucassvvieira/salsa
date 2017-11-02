@@ -74,7 +74,10 @@ public class DonatorController extends AbstractController<Donator, DonatorReposi
 		// Aptitude numbers
 		stats.setAptNumber(repository.countByAptitude(true));
 		stats.setUnaptNumber(repository.countByAptitude(false));
-		
+		stats.setMaleAptNumber(repository.countByAptitudeAndSex(true, "masculino"));
+		stats.setMaleUnaptNumber(repository.countByAptitudeAndSex(false, "masculino"));
+		stats.setFemaleAptNumber(repository.countByAptitudeAndSex(true, "feminino"));
+		stats.setFemaleUnaptNumber(repository.countByAptitudeAndSex(false, "feminino"));
 		/*
 		System.out.println("Doadores -> " + stats.getDonatorsNumber());
 		System.out.println("Homens -> " + stats.getMaleNumber());

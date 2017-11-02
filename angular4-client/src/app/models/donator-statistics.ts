@@ -18,4 +18,8 @@ export class DonatorStatistics {
     // Aptitude-related numbers
     aptNumber: number;
     unaptNumber: number;
+    maleAptNumber: number;
+    maleUnaptNumber: number;
+    femaleAptNumber: number;
+    femaleUnaptNumber: number;
 }

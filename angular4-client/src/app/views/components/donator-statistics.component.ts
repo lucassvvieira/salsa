@@ -24,6 +24,10 @@ export class DonatorStatisticsComponent implements OnInit {
   public aptitudeChartLabels: string[] = ['Aptos a doar', 'Inaptos a doar'];
   public aptitudeChartData: number[] = [];
   public aptitudeChartType = 'pie';
+  // Aptitude chart data with sex
+  public aptitudeWithSexChartLabels: string[] = ['Mulheres aptas', 'Homens aptos', 'Mulheres inaptas', 'Homens inaptos'];
+  public aptitudeWithSexChartData: number[] = [];
+  public aptitudeWithSexChartType = 'pie';
   // Blood type chart data
   public bloodChartLabels: string[] = ['A', 'B', 'O', 'AB'];
   public bloodChartData: number[] = [];
@@ -36,8 +40,8 @@ export class DonatorStatisticsComponent implements OnInit {
   public colorsForTwo = [
     {
       backgroundColor: [
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
+        'rgba(54, 162, 235, 0.5)',
+        'rgba(255, 99, 132, 0.5)',
       ]
     }
   ]
@@ -45,10 +49,10 @@ export class DonatorStatisticsComponent implements OnInit {
   public colorsForFour = [
     {
       backgroundColor: [
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
-        'rgba(255, 206, 86, 0.2)',
-        'rgba(0, 255, 0, 0.2)',
+        'rgba(255, 99, 132, 0.5)',
+        'rgba(54, 162, 235, 0.5)',
+        'rgba(255, 206, 86, 0.5)',
+        'rgba(0, 255, 0, 0.5)',
       ]
     }
   ]
@@ -56,28 +60,28 @@ export class DonatorStatisticsComponent implements OnInit {
   public colorsForEight = [
     {
       backgroundColor: [
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
-        'rgba(255, 206, 86, 0.2)',
-        'rgba(0, 255, 0, 0.2)',
-        'rgba(255, 98, 131, 0.2)',
-        'rgba(102, 102, 153, 0.2)',
-        'rgba(0, 51, 0, 0.2)',
-        'rgba(255, 153, 0, 0.2)'
+        'rgba(255, 99, 132, 0.5)',
+        'rgba(54, 162, 235, 0.5)',
+        'rgba(255, 206, 86, 0.5)',
+        'rgba(0, 255, 0, 0.5)',
+        'rgba(255, 98, 131, 0.5)',
+        'rgba(102, 102, 153, 0.5)',
+        'rgba(0, 51, 0, 0.5)',
+        'rgba(255, 153, 0, 0.5)'
       ]
     }
   ]
 
   constructor(
     private donatorService: DonatorService,
-  ) {  }
+  ) { }
 
   ngOnInit() {
     this.donatorService.getDonatorStats().subscribe(stats => {
       this.stats = stats;
       this.initialize();
     });
-   }
+  }
 
   initialize() {
     // To the sex chart
@@ -87,6 +91,9 @@ export class DonatorStatisticsComponent implements OnInit {
     this.stats.aMinusNumber + this.stats.bMinusNumber + this.stats.oMinusNumber + this.stats.abMinusNumber];
     // To the aptitude chart
     this.aptitudeChartData = [this.stats.aptNumber, this.stats.unaptNumber];
+    // To the aptitude with sex chart
+    this.aptitudeWithSexChartData = [this.stats.femaleAptNumber, this.stats.maleAptNumber,
+    this.stats.femaleUnaptNumber, this.stats.maleUnaptNumber];
     // To the blood type chart
     this.bloodChartData = [this.stats.aPlusNumber + this.stats.aMinusNumber, this.stats.bPlusNumber + this.stats.bMinusNumber,
     this.stats.oPlusNumber + this.stats.oMinusNumber, this.stats.abPlusNumber + this.stats.abMinusNumber];
