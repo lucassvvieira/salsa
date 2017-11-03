@@ -2,6 +2,7 @@ import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { Component, OnInit } from '@angular/core';
+import { FlashMessagesService } from 'ngx-flash-messages';
 
 import { Message } from './../../models/message';
 import { MessageService } from './../../services/message.service';
@@ -22,7 +23,8 @@ export class ModelListingComponent implements OnInit {
         private messageService: MessageService,
         private route: ActivatedRoute,
         private router: Router,
-        private location: Location
+        private location: Location,
+        private flashMessagesService: FlashMessagesService
     ) { }
 
     ngOnInit() {
@@ -78,5 +80,13 @@ export class ModelListingComponent implements OnInit {
                     this.messages = this.messages.filter(m => m !== message);
                 });
         }
+    }
+
+    showFlash(): void {
+        scroll(0, 0);
+        this.flashMessagesService.show('Modelo removido com sucesso!', {
+            classes: ['alert', 'alert-danger'], // You can pass as many classes as you need
+            timeout: 3000, // Default is 3000
+        });
     }
 }

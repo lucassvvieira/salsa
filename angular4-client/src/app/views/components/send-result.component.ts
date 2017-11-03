@@ -5,6 +5,7 @@ import 'rxjs/add/operator/first';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { FlashMessagesService } from 'ngx-flash-messages';
 
 import { DonatorService } from '../../services/donator.service';
 import { Donator } from '../../models/donator';
@@ -34,7 +35,8 @@ export class SendResultComponent implements OnInit {
     private messageService: MessageService,
     private route: ActivatedRoute,
     private router: Router,
-    private location: Location
+    private location: Location,
+    private flashMessagesService: FlashMessagesService
   ) {
     this.tokenDonator = new Donator;
     this.sendingParams = new Array<string>();
@@ -124,5 +126,14 @@ export class SendResultComponent implements OnInit {
 
   goBack(): void {
     this.location.back();
+  }
+
+  greetAndGoBack(): void {
+    scroll(0, 0);
+    this.flashMessagesService.show('Mensagens enviadas com sucesso!', {
+        classes: ['alert', 'alert-success'], // You can pass as many classes as you need
+        timeout: 3000, // Default is 3000
+    });
+    setTimeout(()=>{ this.location.back(); }, 1800);
   }
 }

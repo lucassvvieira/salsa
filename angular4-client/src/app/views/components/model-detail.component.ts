@@ -2,6 +2,7 @@ import { Location } from '@angular/common';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { Component, OnInit } from '@angular/core';
+import { FlashMessagesService } from 'ngx-flash-messages';
 
 import { MessageService } from './../../services/message.service';
 import { Message } from './../../models/message';
@@ -17,7 +18,8 @@ export class ModelDetailComponent implements OnInit {
     constructor(
         private messageService: MessageService,
         private route: ActivatedRoute,
-        private location: Location
+        private location: Location,
+        private flashMessagesService: FlashMessagesService
     ) { }
 
     ngOnInit(): void {
@@ -28,6 +30,14 @@ export class ModelDetailComponent implements OnInit {
     }
 
     goBack(): void {
-        this.location.back();
+        setTimeout(()=>{ this.location.back() }, 1800);
+    }
+
+    showFlash(): void {
+        scroll(0, 0);
+        this.flashMessagesService.show('Modelo atualizado com sucesso!', {
+            classes: ['alert', 'alert-success'], // You can pass as many classes as you need
+            timeout: 3000, // Default is 3000
+        });
     }
 }

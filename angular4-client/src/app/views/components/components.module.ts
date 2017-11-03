@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ButtonsComponent } from './buttons.component';
 import { CardsComponent } from './cards.component';
+import { FlashMessagesModule } from 'ngx-flash-messages';
 
 // Forms Component
 import { FormsComponent } from './forms.component';
@@ -47,7 +48,8 @@ import { ModelDetailComponent } from './model-detail.component';
     ModalModule.forRoot(),
     TabsModule,
     ChartsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    FlashMessagesModule
   ],
   declarations: [
     DonatorFormComponent,

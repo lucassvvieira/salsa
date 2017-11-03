@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { FlashMessagesService } from 'ngx-flash-messages';
 import 'rxjs/add/operator/switchMap';
 
 import { DonatorService } from '../../services/donator.service';
@@ -24,7 +25,8 @@ export class DonatorListComponent implements OnInit {
         private donatorService: DonatorService,
         private route: ActivatedRoute,
         private router: Router,
-        private location: Location
+        private location: Location,
+        private flashMessagesService: FlashMessagesService
     ) { }
 
     ngOnInit() {
@@ -92,5 +94,13 @@ export class DonatorListComponent implements OnInit {
                         .map(donators => donators.filter(d => d !== donator));
                 });
         }
+    }
+
+    showFlash(): void {
+        scroll(0, 0);
+        this.flashMessagesService.show('Registro removido com sucesso!', {
+            classes: ['alert', 'alert-danger'], // You can pass as many classes as you need
+            timeout: 3000, // Default is 3000
+        });
     }
 }
