@@ -72,9 +72,11 @@ export class ModelListingComponent implements OnInit {
     }
 
     delete(message: Message): void {
-        this.messageService.delete(message.id)
-        .then(() => {
-            this.messages = this.messages.filter(m => m !== message);
-        });
+        if (confirm('Você tem certeza que quer excluir esse registro?')) {
+            this.messageService.delete(message.id)
+                .then(() => {
+                    this.messages = this.messages.filter(m => m !== message);
+                });
+        }
     }
 }

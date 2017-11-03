@@ -85,10 +85,12 @@ export class DonatorListComponent implements OnInit {
     }
 
     delete(donator: Donator): void {
-        this.donatorService.delete(donator.id)
-            .then(() => {
-                this.donators = this.donators
-                    .map(donators => donators.filter(d => d !== donator));
-            });
+        if (confirm('Você tem certeza que quer excluir esse registro?')) {
+            this.donatorService.delete(donator.id)
+                .then(() => {
+                    this.donators = this.donators
+                        .map(donators => donators.filter(d => d !== donator));
+                });
+        }
     }
 }
