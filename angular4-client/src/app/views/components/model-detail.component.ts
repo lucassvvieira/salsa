@@ -33,6 +33,10 @@ export class ModelDetailComponent implements OnInit {
         setTimeout(()=>{ this.location.back() }, 1800);
     }
 
+    goBackRightNow(): void {
+        this.location.back();
+    }
+
     showFlash(): void {
         scroll(0, 0);
         this.flashMessagesService.show('Modelo atualizado com sucesso!', {
