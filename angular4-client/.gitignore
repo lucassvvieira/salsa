@@ -1,0 +1,12 @@
+# Don't track content od these folders
+node_modules/
+
+# VSCode Workspace
+.vscode/
+*.code-workspace
+
+# Eclipse
+.settings
+
+# Production Folder
+dist/

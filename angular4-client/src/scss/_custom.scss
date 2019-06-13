@@ -1,1 +1,9 @@
 // Here you can add other styles
+html, body {
+  overflow: hidden;
+}
+
+app-dashboard {
+  //z-index: 1;
+  background-color: $body-bg;
+}

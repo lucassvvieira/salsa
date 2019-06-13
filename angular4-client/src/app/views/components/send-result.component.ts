@@ -132,8 +132,8 @@ export class SendResultComponent implements OnInit {
     scroll(0, 0);
     this.flashMessagesService.show('Mensagens enviadas com sucesso!', {
         classes: ['alert', 'alert-success'], // You can pass as many classes as you need
-        timeout: 3000, // Default is 3000
+        timeout: 1000, // Default is 3000
     });
-    setTimeout(()=>{ this.location.back(); }, 1800);
+    setTimeout(()=>{ this.location.back(); }, 3000);
   }
 }

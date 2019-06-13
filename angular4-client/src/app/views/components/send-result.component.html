@@ -58,7 +58,7 @@
                     <div class="form-group row">
                         <label class="col-md-3 form-control-label" for="select">Escolha o modelo de mensagem</label>
                         <div class="col-md-9">
-                            <select id="select" name="message" class="form-control" [(ngModel)]="message" (ngModelChange)="updateText($event)">
+                            <select id="select" name="message" class="form-control" (ngModelChange)="updateText($event)">
                                 <option value="">Selecione</option>
                                 <ng-container *ngFor="let message of messages" (change)="updateModelId(message.id)">
                                     <option [ngValue]="message" [value]="message.body">{{message.title}}</option>
@@ -90,7 +90,7 @@
 </div>
 
 <div bsModal #previewModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-success" role="document">
+    <div class="modal-dialog modal-success" role="document" style="z-index: 2000;">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Preview de mensagem a ser enviada</h4>

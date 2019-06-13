@@ -42,20 +42,18 @@
                                             <span class="help-block"></span>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="form-group col-sm-7">
-                                            <label class="col-md-4 form-control-label" for="text-input">Data de Nascimento</label>
-                                            <div class="col-md-9">
-                                                <input type="date" id="birthdate" [(ngModel)]="donator.birthDate" name="birthDate" class="form-control" placeholder="birthdate">
-                                                <span class="help-block"></span>
-                                            </div>
+                                    <div class="form-group row">
+                                        <label class="col-md-3 form-control-label" for="text-input">Data de Nascimento</label>
+                                        <div class="col-md-9">
+                                            <input type="date" id="birthdate" [(ngModel)]="donator.birthDate" name="birthDate" class="form-control" placeholder="birthdate">
+                                            <span class="help-block"></span>
                                         </div>
-                                        <div class="form-group col-sm-7">
-                                            <label class="col-md-4 form-control-label" for="text-input">Data de Cadastro</label>
-                                            <div class="col-md-9">
-                                                <input type="date" id="registerDate" [(ngModel)]="donator.registerDate" name="registerDate" class="form-control" placeholder="registerdate">
-                                                <span class="help-block"></span>
-                                            </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-md-3 form-control-label" for="text-input">Data de Cadastro</label>
+                                        <div class="col-md-9">
+                                            <input type="date" id="registerDate" [(ngModel)]="donator.registerDate" name="registerDate" class="form-control" placeholder="registerdate">
+                                            <span class="help-block"></span>
                                         </div>
                                     </div>
                                 </div>
@@ -69,16 +67,9 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="form-group row">
-                                        <label class="col-md-3 form-control-label" for="text-input">Cidade</label>
-                                        <div class="col-md-9">
-                                            <input type="text" id="city" [(ngModel)]="donator.city" name="city" class="form-control" placeholder="Cidade">
-                                            <span class="help-block"></span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
                                         <label class="col-md-3 form-control-label" for="select">Estado</label>
                                         <div class="col-md-9">
-                                            <select id="state" [(ngModel)]="donator.state" name="state" class="form-control">
+                                            <select id="state" [(ngModel)]="donator.state" (ngModelChange)="updateCitys($event)" name="state" class="form-control">
                                                 <option value="">Escolha o estado</option>
                                                 <option value="AC">AC</option>
                                                 <option value="AP">AP</option>
@@ -107,6 +98,17 @@
                                                 <option value="SE">SE</option>
                                                 <option value="TO">TO</option>
                                             </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-md-3 form-control-label" for="text-input">Cidade</label>
+                                        <div class="col-md-9">
+                                            <select type="text" id="city" [(ngModel)]="donator.city" name="city" class="form-control" placeholder="Cidade">
+                                                <ng-container *ngFor="let city of citys">
+                                                    <option [ngValue]="city" [value]="city">{{city}}</option>
+                                                </ng-container>
+                                            </select>
+                                            <span class="help-block"></span>
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -257,8 +259,8 @@
                 <div class="card-footer">
                     <button (click)="onSubmit()" type="submit" class="btn btn-sm btn-success active">
                         <i class="fa fa-dot-circle-o"></i> Cadastrar!</button>
-                    <button (click)="goBack()" type="reset" class="btn btn-sm btn-danger">
-                        <i class="fa fa-ban"></i> Voltar</button>
+                    <button (click)="goBack()" type="reset" class="btn btn-sm btn-warning">
+                        <i class="fa fa-arrow-left" aria-hidden="true"></i> Voltar</button>
                 </div>
             </form>
         </div>

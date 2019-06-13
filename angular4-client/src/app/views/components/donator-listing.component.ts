@@ -78,8 +78,8 @@ export class DonatorListComponent implements OnInit {
         }
     }
 
-    gotoDetail(): void {
-        this.router.navigate(['components/donator-detail', this.selectedDonator.id]);
+    gotoDetail(donator: Donator): void {
+        this.router.navigate(['components/donator-detail', donator.id]);
     }
 
     goBack(): void {

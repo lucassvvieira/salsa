@@ -1,1 +1,3 @@
-/angular4-client/dist
+# VSCode Workspace
+.vscode/
+*.code-workspace

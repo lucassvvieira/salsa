@@ -42,20 +42,18 @@
                                             <span class="help-block"></span>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="form-group col-sm-7">
-                                            <label class="col-md-4 form-control-label" for="date-input">Data de Nascimento</label>
-                                            <div class="col-md-9">
-                                                <input type="date" id="birthdate" [(ngModel)]="donator.birthDate" name="birthDate" class="form-control" placeholder="birthdate">
-                                                <span class="help-block"></span>
-                                            </div>
+                                    <div class="form-group row">
+                                        <label class="col-md-3 form-control-label" for="date-input">Data de Nascimento</label>
+                                        <div class="col-md-9">
+                                            <input type="date" id="birthdate" [(ngModel)]="donator.birthDate" name="birthDate" class="form-control" placeholder="birthdate">
+                                            <span class="help-block"></span>
                                         </div>
-                                        <div class="form-group col-sm-7">
-                                            <label class="col-md-4 form-control-label" for="text-input">Data de Cadastro</label>
-                                            <div class="col-md-9">
-                                                <input type="date" id="registerDate" [(ngModel)]="donator.registerDate" name="registerDate" class="form-control" placeholder="registerdate">
-                                                <span class="help-block"></span>
-                                            </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-md-3 form-control-label" for="text-input">Data de Cadastro</label>
+                                        <div class="col-md-9">
+                                            <input type="date" id="registerDate" [(ngModel)]="donator.registerDate" name="registerDate" class="form-control" placeholder="registerdate">
+                                            <span class="help-block"></span>
                                         </div>
                                     </div>
                                 </div>
@@ -258,8 +256,8 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="form-group col-sm-7">
-                                        <label class="col-md-4 form-control-label" for="text-input">Data da última doação</label>
+                                    <div class="form-group row">
+                                        <label class="col-md-3 form-control-label" for="text-input">Data da última doação</label>
                                         <div class="col-md-9">
                                             <input type="date" id="lastDonation" [(ngModel)]="donator.lastDonation" name="lastDonation" class="form-control" placeholder="lastDonation">
                                             <span class="help-block"></span>
@@ -276,8 +274,8 @@
                     <button (click)="this.showFlash(); this.donatorService.update(this.donator); this.goBack();" type="submit"
                         class="btn btn-sm btn-success active">
                         <i class="fa fa-dot-circle-o"></i> Atualizar dados</button>
-                    <button (click)="goBackRightNow()" type="reset" class="btn btn-sm btn-danger">
-                        <i class="fa fa-ban"></i> Voltar</button>
+                    <button (click)="goBackRightNow()" type="reset" class="btn btn-sm btn-warning">
+                        <i class="fa fa-arrow-left" aria-hidden="true"></i> Voltar</button>
                 </div>
             </form>
         </div>
