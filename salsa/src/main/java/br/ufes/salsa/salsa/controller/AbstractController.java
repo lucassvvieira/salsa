@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 public abstract class AbstractController<T, T_Repository extends JpaRepository> {
 	
@@ -20,7 +21,7 @@ public abstract class AbstractController<T, T_Repository extends JpaRepository> 
 	public List<T> listAll() {
 		return repository.findAll();
 	} */
-	
+	@CrossOrigin
 	@RequestMapping(method=RequestMethod.GET, value="/{id}")
 	public ResponseEntity<T> findOne(@PathVariable("id") Long id) {
 		T var = (T) repository.findOne(id);
