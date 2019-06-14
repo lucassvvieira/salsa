@@ -6,18 +6,20 @@ import { HttpParams, HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 
+import { environment } from 'environments/environment';
+
 import { Donator } from '../models/donator';
 import { DonatorStatistics } from '../models/donator-statistics';
 
 @Injectable()
 export class DonatorService {
     // URL to the Web API
-    private donatorsUrl = 'api/donators';
+    private donatorsUrl = environment.apiURL + 'donators';
     private queryUrl = '/search';
     private statsUrl = '/statistics';
     private headers = new Headers({ 'Content-Type': 'application/json' });
 
-    constructor(private http: Http) { }
+    constructor(private http: Http) {}
 
     getDonator(id: number): Observable<Donator> {
         const url = `${this.donatorsUrl}/${id}`;

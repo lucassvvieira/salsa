@@ -5,6 +5,8 @@ import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 import { sanitize } from '../helpers/sanitize.helper';
 
+import { environment } from 'environments/environment';
+
 import { Message } from '../models/message';
 import { SentMessage } from '../models/sent-message';
 import { MessageStatistics } from '../models/message-statistics';
@@ -12,7 +14,7 @@ import { MessageStatistics } from '../models/message-statistics';
 @Injectable()
 export class MessageService {
     // URL to the Web API
-    private messagesUrl = 'api/messages';
+    private messagesUrl = environment.apiURL + 'messages';
     private statsUrl = '/statistics';
     private sendingUrl = '/send'
     private sentUrl = '/sent'
