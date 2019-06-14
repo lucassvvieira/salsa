@@ -1,0 +1,114 @@
+<div class="container" fxLayout="row wrap">
+
+  <mat-card fxFlex="32.33" fxFlex.lt-md="49" fxFlex.lt-sm="100">
+    <mat-card-title>
+      <span>Sexo</span>
+    </mat-card-title>
+
+    <mat-card-content>
+      <div class="chart">
+        <canvas baseChart
+            [data]="sexChartData"
+            [labels]="sexChartLabels"
+            [chartType]="sexChartType"
+            [options]="chartOptions"
+            [colors]="colorsForTwo"></canvas>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card fxFlex="32.33" fxFlex.lt-md="49" fxFlex.lt-sm="100">
+    <mat-card-title>
+      <span>Tipo sanguíneo</span>
+    </mat-card-title>
+
+    <mat-card-content>
+      <div class="chart-wrapper">
+        <canvas baseChart class="chart"
+            [data]="sexChartData"
+            [labels]="sexChartLabels"
+            [chartType]="sexChartType"
+            [options]="chartOptions"
+            [colors]="colorsForTwo"></canvas>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card fxFlex="32.33" fxFlex.lt-md="49" fxFlex.lt-sm="100">
+    <mat-card-title>
+      <span>Fator RH</span>
+    </mat-card-title>
+
+    <mat-card-content>
+      <div class="chart-wrapper">
+        <canvas baseChart class="chart"
+            [data]="sexChartData"
+            [labels]="sexChartLabels"
+            [chartType]="sexChartType"
+            [options]="chartOptions"
+            [colors]="colorsForTwo"></canvas>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card fxFlex="32.33" fxFlex.lt-md="49" fxFlex.lt-sm="100">
+    <mat-card-title>
+      <span>Aptidão</span>
+    </mat-card-title>
+
+    <mat-card-content>
+      <div class="chart">
+        <canvas baseChart
+            [data]="sexChartData"
+            [labels]="sexChartLabels"
+            [chartType]="sexChartType"
+            [options]="chartOptions"
+            [colors]="colorsForTwo"></canvas>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card fxFlex="32.33" fxFlex.lt-md="49" fxFlex.lt-sm="100">
+    <mat-card-title>
+      <span>Tipo sanguíneo com fator Rh</span>
+    </mat-card-title>
+
+    <mat-card-content>
+      <div class="chart-wrapper">
+        <canvas baseChart class="chart"
+            [data]="sexChartData"
+            [labels]="sexChartLabels"
+            [chartType]="sexChartType"
+            [options]="chartOptions"
+            [colors]="colorsForTwo"></canvas>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card fxFlex="32.33" fxFlex.lt-md="49" fxFlex.lt-sm="100">
+    <mat-card-title>
+      <span>Aptidão por sexo</span>
+    </mat-card-title>
+
+    <mat-card-content>
+      <div class="chart-wrapper">
+        <canvas baseChart class="chart"
+            [data]="sexChartData"
+            [labels]="sexChartLabels"
+            [chartType]="sexChartType"
+            [options]="chartOptions"
+            [colors]="colorsForTwo"></canvas>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card fxFlex="100">
+    <mat-card-title>
+      <span>Você sabia?</span>
+    </mat-card-title>
+
+    <mat-card-content>
+      <span>Ao clicar nas legendas dos gráficos, você pode habilitar ou desabilitar a exibição do elemento que clicou!</span>
+    </mat-card-content>
+  </mat-card>
+</div>

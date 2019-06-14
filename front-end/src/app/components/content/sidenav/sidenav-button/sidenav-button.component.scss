@@ -1,0 +1,12 @@
+a {
+    padding: 0;
+    width: 100%;
+    .mat-action-row {
+        justify-content: flex-start;
+    
+        span {
+            line-height: 24px;
+            padding: 0 8px;
+        }
+    }
+}

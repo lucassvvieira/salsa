@@ -1,0 +1,17 @@
+<mat-toolbar>
+  <a mat-button [routerLink]="['/']">Salsa</a>
+  <div class="spacer"></div>
+  <button mat-icon-button [matMenuTriggerFor]="themePicker">
+    <mat-icon>format_color_fill</mat-icon>
+  </button>
+  <mat-menu #themePicker="matMenu">
+    <mat-grid-list cols="2">
+      <mat-grid-tile>
+        <button mat-button>a</button>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <button mat-button>a</button>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-menu>
+</mat-toolbar>

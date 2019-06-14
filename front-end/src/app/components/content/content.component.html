@@ -1,0 +1,31 @@
+<mat-sidenav-container >
+  <mat-sidenav #sidenav
+      mode="over"
+      [(opened)]="opened"
+      (opened)="events.push('open!')"
+      (closed)="events.push('close!')">
+    <app-sidenav></app-sidenav>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+
+    <mat-toolbar>
+        <button mat-button fxHide.gt-sm (click)="sidenav.toggle()">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <app-breadcrumbs></app-breadcrumbs>
+    </mat-toolbar>
+
+    <div fxLayout="column">
+      <div fxLayout="row wrap">
+        <app-sidenav fxFlex="20" fxHide.lt-md></app-sidenav>
+        <div fxFlex="80" fxFlex.lt-md="100" style="overflow-y: unset;">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+      <app-footer fxFlex></app-footer>
+    </div>
+    
+  </mat-sidenav-content>
+</mat-sidenav-container>
+  

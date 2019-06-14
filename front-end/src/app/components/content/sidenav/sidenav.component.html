@@ -1,0 +1,50 @@
+<mat-accordion>
+
+  <!-- Doadores -->
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <mat-icon>group</mat-icon>
+        <span >Doadores</span>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <app-sidenav-button
+        icon="search" 
+        name="Busca"
+        [link]="['donator', 'search']"></app-sidenav-button>
+    <app-sidenav-button
+        icon="create" 
+        name="Cadastro"
+        [link]="['donator', 'form']"></app-sidenav-button>
+    
+  </mat-expansion-panel>
+
+  <!-- Mensagens -->
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <mat-icon>message</mat-icon>
+        <span>Mensagens</span>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <app-sidenav-button
+        icon="send" 
+        name="Enviar SMS" 
+        [link]="['message', 'send']"></app-sidenav-button>
+    <app-sidenav-button
+        icon="history" 
+        name="Histórico de Envios"
+        [link]="['message', 'history']"></app-sidenav-button>
+    <app-sidenav-button
+        icon="description"
+        name="Modelos"
+        [link]="['message', 'models']"></app-sidenav-button>
+    <app-sidenav-button
+        icon="note_add"
+        name="Cadastro de Modelos"
+        [link]="['message', 'model-form']"></app-sidenav-button>
+  </mat-expansion-panel>
+
+</mat-accordion>

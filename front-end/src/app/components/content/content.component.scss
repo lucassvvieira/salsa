@@ -1,0 +1,16 @@
+.mat-sidenav {
+    max-width: 35%;
+
+    @media screen and (max-width: 599px){
+        max-width: 50%;
+    }
+
+    @media screen and (max-width: 420px){
+        max-width: 75%;
+    }
+}
+
+.mat-drawer-side {
+    border: none;
+    background: transparent;
+}

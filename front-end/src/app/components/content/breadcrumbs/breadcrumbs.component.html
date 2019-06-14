@@ -1,0 +1,15 @@
+<div fxLayout="row" fxHide.lt-sm>
+  <ng-template ngFor let-breadcrumb [ngForOf]="breadcrumbs" let-last = last>
+    <div fxFlex *ngIf="breadcrumb.label&&breadcrumb.url">
+      <a mat-button *ngIf="!last" [routerLink]="breadcrumb.url">{{breadcrumb.label}}</a>
+      <span *ngIf="last" [routerLink]="breadcrumb.url">{{breadcrumb.label}}</span>
+    </div>
+    <div fxFlex *ngIf="breadcrumb.label&&breadcrumb.url&&!last">
+      <mat-icon>chevron_right</mat-icon>
+    </div>
+  </ng-template>
+</div>
+<!--
+ngFor let-breadcrumb [ngForOf]="breadcrumbs" let-last = last>
+  <span [routerLink]="breadcrumb.url">{{breadcrumb.label}}</span>
+-->

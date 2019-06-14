@@ -1,0 +1,129 @@
+<div class="container">
+  <mat-card class="card-1">
+    <mat-card-title>
+      <span>Escolha as Características dos Doadores</span>
+    </mat-card-title>
+
+    <mat-card-content>
+      
+      <div fxLayout="row wrap">
+
+        <mat-card class="card-2" fxFlex="49.5" fxFlex.lt-sm="100">
+          <mat-card-title>
+            <span>Dados Pessoais</span>
+          </mat-card-title>
+      
+          <mat-card-content>
+            <mat-form-field>
+              <input matInput placeholder="Primeiro Nome">
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput placeholder="Sobreome">
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput placeholder="Nome Completo da Mãe">
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Estado</mat-label>
+              <mat-select>
+                <mat-option value="ES">ES</mat-option>
+                <mat-option value="MG">MG</mat-option>
+                <mat-option value="SP">SP</mat-option>
+                <mat-option value="RJ">RJ</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Cidade</mat-label>
+              <mat-select>
+                <mat-option value="ES">ES</mat-option>
+                <mat-option value="MG">MG</mat-option>
+                <mat-option value="SP">SP</mat-option>
+                <mat-option value="RJ">RJ</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Sexo</mat-label>
+              <mat-select>
+                <mat-option value="Masculino">Masculido</mat-option>
+                <mat-option value="Feminino">Feminino</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </mat-card-content>
+        </mat-card>
+
+        <div fxFlex="49.5" fxFlex.lt-sm="100" fxLayout="column">
+          <mat-card fxFlex class="card-3">
+            <mat-card-title>
+              <span>Dados Sanguíneos</span>
+            </mat-card-title>
+        
+            <mat-card-content>
+              <mat-form-field>
+                <mat-label>Tipo Sanguíneo</mat-label>
+                <mat-select>
+                  <mat-option value="O">O</mat-option>
+                  <mat-option value="A">A</mat-option>
+                  <mat-option value="B">B</mat-option>
+                  <mat-option value="AB">AB</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label>Fator RH</mat-label>
+                <mat-select>
+                  <mat-option value="+">+</mat-option>
+                  <mat-option value="-">-</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </mat-card-content>
+          </mat-card>
+
+          <mat-card fxFlex class="card-3">
+            <mat-card-title>
+              <span>Aptidão do Doador</span>
+            </mat-card-title>
+        
+            <mat-card-content>
+              <mat-form-field>
+                <mat-label>Apto para nova doação?</mat-label>
+                <mat-select>
+                  <mat-option value="Sim">Sim</mat-option>
+                  <mat-option value="Não">Não</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </mat-card-content>
+          </mat-card>
+
+          <mat-card fxFlex class="card-3">
+            <mat-card-title>
+              <span>Extras</span>
+            </mat-card-title>
+        
+            <mat-card-content>
+              <mat-form-field>
+                <mat-label>Apto para nova doação?</mat-label>
+                <mat-select>
+                  <mat-option value="Sim">Sim</mat-option>
+                  <mat-option value="Não">Não</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </mat-card-content>
+          </mat-card>
+
+        </div>
+
+      </div>
+
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary">
+        <mat-icon>search</mat-icon>
+        <span>Buscar</span>
+      </button>
+
+      <button mat-raised-button color="warn">
+          <mat-icon>search</mat-icon>
+          <span>Cancelar</span>
+        </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

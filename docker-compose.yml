@@ -22,7 +22,7 @@ services:
     ports:
       - 8080:8080
     volumes:
-      - ./salsa/target:/target:ro
+      - ./back-end/target:/target:ro
     depends_on:
       - db
     links:
@@ -34,7 +34,7 @@ services:
     ports:
       - 80:80
     volumes:
-      - ./angular4-client/dist:/usr/share/nginx/html:ro
+      - ./front-end/dist:/usr/share/nginx/html:ro
     environment:
       - NGINX_PORT=80
     depends_on:

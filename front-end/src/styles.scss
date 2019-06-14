@@ -1,0 +1,18 @@
+@import 'style/theme';
+
+body { 
+  font-family: Roboto, Arial, sans-serif;
+  margin: 0;
+}
+
+.stick {
+  position: sticky;
+}
+
+.mat-expansion-panel-body {
+  padding: 0 !important;
+}
+
+.mat-menu-content {
+  padding: 8px;
+}
