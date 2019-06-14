@@ -17,12 +17,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import br.ufes.salsa.salsa.model.Donator;
 import br.ufes.salsa.salsa.model.DonatorStats;
 import br.ufes.salsa.salsa.repository.DonatorRepository;
 
-@RequestMapping("/api/donators")
+@CrossOrigin
+@RequestMapping("/donators")
 @RestController
 public class DonatorController extends AbstractController<Donator, DonatorRepository>{
 	@Autowired
