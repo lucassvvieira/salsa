@@ -1,3 +1,54 @@
-<p>
-  message-history works!
-</p>
+<div class="container">
+  <mat-card class="card-1">
+    <mat-card-title>
+      <span>Lista de Modelos de Mensagem</span>
+    </mat-card-title>
+
+    <mat-card-content>
+      <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z2">
+
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+      
+        <!-- Position Column -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Registro </th>
+          <td class="id" mat-cell *matCellDef="let element"> {{element.id}} </td>
+        </ng-container>
+      
+        <!-- Name Column -->
+        <ng-container matColumnDef="body">
+          <th mat-header-cell *matHeaderCellDef> Corpo </th>
+          <td class="body" mat-cell *matCellDef="let element"> {{element.body}} </td>
+        </ng-container>
+      
+        <!-- Weight Column -->
+        <ng-container matColumnDef="sendingDate">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Data de Envio </th>
+          <td class="sendingDate" mat-cell *matCellDef="let element"> {{element.sendingDate | date: 'dd/MM/yyyy'}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="recipients">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Número de Destinatários </th>
+          <td class="recipients" mat-cell *matCellDef="let element"> {{element.recipients}} </td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    
+      <mat-paginator class="mat-elevation-z2"
+          showFirstLastButtons
+          [pageSize]="10"
+          [hidePageSize]="true">
+      </mat-paginator>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="accent">
+          <mat-icon>arrow_back</mat-icon>
+          <span>Voltar</span>
+        </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

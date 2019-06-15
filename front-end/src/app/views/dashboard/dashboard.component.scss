@@ -1,5 +1,7 @@
 .container {
-    margin: 1rem;
+    @media screen and (max-width: 599px){
+        margin: 0.5rem;
+    }
 }
 
 .mat-card {
@@ -21,5 +23,5 @@
 
 .chart {
     width: 100% !important;
-    height: auto;
+    height: 100% !important;
 }

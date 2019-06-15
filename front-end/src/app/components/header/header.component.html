@@ -1,4 +1,4 @@
-<mat-toolbar>
+<mat-toolbar color="primary">
   <a mat-button [routerLink]="['/']">Salsa</a>
   <div class="spacer"></div>
   <button mat-icon-button [matMenuTriggerFor]="themePicker">
@@ -7,10 +7,14 @@
   <mat-menu #themePicker="matMenu">
     <mat-grid-list cols="2">
       <mat-grid-tile>
-        <button mat-button>a</button>
+        <button mat-button (click)="setLightTheme()" class="light">
+          <mat-icon>check_circle</mat-icon>
+        </button>
       </mat-grid-tile>
       <mat-grid-tile>
-        <button mat-button>a</button>
+        <button mat-button (click)="setDarkTheme()" class="dark">
+          <mat-icon>check_circle</mat-icon>
+        </button>
       </mat-grid-tile>
     </mat-grid-list>
   </mat-menu>

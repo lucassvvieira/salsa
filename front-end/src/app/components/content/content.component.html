@@ -8,24 +8,21 @@
   </mat-sidenav>
 
   <mat-sidenav-content>
-
-    <mat-toolbar>
-        <button mat-button fxHide.gt-sm (click)="sidenav.toggle()">
-            <mat-icon>menu</mat-icon>
-        </button>
-        <app-breadcrumbs></app-breadcrumbs>
+    <mat-toolbar color="primary">
+      <button mat-button fxHide.gt-sm (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <app-breadcrumbs></app-breadcrumbs>
     </mat-toolbar>
 
-    <div fxLayout="column">
-      <div fxLayout="row wrap">
-        <app-sidenav fxFlex="20" fxHide.lt-md></app-sidenav>
-        <div fxFlex="80" fxFlex.lt-md="100" style="overflow-y: unset;">
-          <router-outlet></router-outlet>
-        </div>
+    <div class="content" fxLayout="row wrap">
+      <app-sidenav fxFlex="18" fxFlex.md="25" fxHide.lt-md></app-sidenav>
+      <div fxFlex="82" fxFlex.md="75" fxFlex.lt-md="100" style="overflow-y: unset;">
+        <router-outlet></router-outlet>
       </div>
-      <app-footer fxFlex></app-footer>
     </div>
     
+    <app-footer></app-footer>
   </mat-sidenav-content>
 </mat-sidenav-container>
   

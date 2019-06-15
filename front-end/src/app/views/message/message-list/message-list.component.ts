@@ -22,16 +22,15 @@ const ELEMENT_DATA: DonatorElement[] = [
 ];
 
 @Component({
-  selector: 'app-donator-list',
-  templateUrl: './donator-list.component.html',
-  styleUrls: ['./donator-list.component.scss']
+  selector: 'app-message-list',
+  templateUrl: './message-list.component.html',
+  styleUrls: ['./message-list.component.scss']
 })
-export class DonatorListComponent implements OnInit {
+export class MessageListComponent implements OnInit {
   displayedColumns: string[] = [
-      'id', 'firstName', 'lastName',
-      'mothersName', 'city', 'bloodType',
-      'bloodFactor', 'aptitude', 'edit', 'delete'
-    ];
+    'id', 'firstName', 'lastName',
+    'mothersName', 'aptitude'
+  ];
   //dataSource = ELEMENT_DATA;
   dataSource = new MatTableDataSource<DonatorElement>(ELEMENT_DATA);
 

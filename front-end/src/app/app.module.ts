@@ -11,6 +11,9 @@ import { MaterialModule } from './material.module';
 // Chats Import
 import { ChartsModule } from 'ng2-charts';
 
+// Services
+import { ThemeService } from './services/theme.service';
+
 // Application Imports
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -50,7 +53,7 @@ import { MessageModule } from './message.module';
     MaterialModule,
     ChartsModule
   ],
-  providers: [],
+  providers: [ThemeService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

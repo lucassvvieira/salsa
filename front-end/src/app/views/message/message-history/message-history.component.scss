@@ -1,0 +1,13 @@
+.id,.recipients, .sendingDate {
+    width: 10%;
+}
+
+.body {
+    width: 70%;
+}
+
+@media screen and (max-width: 599px) {
+    .recipients, .id {
+        text-align: center;
+    }
+}

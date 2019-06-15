@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
 
 export interface DonatorElement {
   id: number;
@@ -20,11 +23,16 @@ export class MessageModelsComponent implements OnInit {
   displayedColumns: string[] = [
     'id', 'title', 'content', 'edit', 'delete'
   ];
-  dataSource = ELEMENT_DATA;
+  //dataSource = ELEMENT_DATA;
+  dataSource = new MatTableDataSource<DonatorElement>(ELEMENT_DATA);
+
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  @ViewChild(MatSort, {static: true}) sort: MatSort;
 
   constructor() { }
 
   ngOnInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
-
 }

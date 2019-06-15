@@ -18,14 +18,12 @@ export class BreadcrumbsComponent implements OnInit {
     this.router.events
     .filter(event => event instanceof NavigationEnd)
     .subscribe((event) => {
-      console.log('router events console... ', event);
       this.breadcrumbs = [{
         label: 'Home',
         url: '/'
       }];
       let currentRoute = this.activatedRoute.root;
       let tmpUrl = '';
-      console.log('router events console... ', currentRoute);
       do {
         const childrenRoutes = currentRoute.children;
         currentRoute = null;
@@ -40,11 +38,9 @@ export class BreadcrumbsComponent implements OnInit {
               url: tmpUrl
             });
             currentRoute = route;
-            console.log(tmpUrl);
           }
         });
       } while (currentRoute);
-      console.log(this.breadcrumbs);
     });
   }
 

@@ -1,11 +1,26 @@
 <mat-accordion>
+  <!-- Doadores -->
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <mat-icon>home</mat-icon>
+        <span> Início </span>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <app-sidenav-button
+        icon="dashboard" 
+        name="Dashboard"
+        [link]="['dashboard']"></app-sidenav-button>
+    
+  </mat-expansion-panel>
 
   <!-- Doadores -->
   <mat-expansion-panel>
     <mat-expansion-panel-header>
       <mat-panel-title>
         <mat-icon>group</mat-icon>
-        <span >Doadores</span>
+        <span> Doadores </span>
       </mat-panel-title>
     </mat-expansion-panel-header>
 
@@ -25,7 +40,7 @@
     <mat-expansion-panel-header>
       <mat-panel-title>
         <mat-icon>message</mat-icon>
-        <span>Mensagens</span>
+        <span> Mensagens </span>
       </mat-panel-title>
     </mat-expansion-panel-header>
 
@@ -46,5 +61,4 @@
         name="Cadastro de Modelos"
         [link]="['message', 'model-form']"></app-sidenav-button>
   </mat-expansion-panel>
-
 </mat-accordion>

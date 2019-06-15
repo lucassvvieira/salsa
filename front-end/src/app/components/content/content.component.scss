@@ -1,3 +1,19 @@
+.mat-sidenav-container {
+    min-height: calc(100vh - 64px);
+
+    @media screen and (max-width: 599px){
+        min-height: calc(100vh - 56px);
+    }
+
+    .content {
+        min-height: calc(100vh - 3 * 64px);
+
+        @media screen and (max-width: 599px){
+            min-height: calc(100vh - 3 * 56px);
+        }
+    }
+}
+
 .mat-sidenav {
     max-width: 35%;
 

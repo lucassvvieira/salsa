@@ -5,65 +5,65 @@
     </mat-card-title>
 
     <mat-card-content>
-      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z2">
 
         <!--- Note that these columns can be defined in any order.
               The actual rendered columns are set as a property on the row definition" -->
       
         <!-- Position Column -->
         <ng-container matColumnDef="id">
-          <th mat-header-cell *matHeaderCellDef> Registro </th>
-          <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Registro </th>
+          <td class="id" mat-cell *matCellDef="let element"> {{element.id}} </td>
         </ng-container>
       
         <!-- Name Column -->
         <ng-container matColumnDef="firstName">
-          <th mat-header-cell *matHeaderCellDef> Nome </th>
-          <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Nome </th>
+          <td class="firstName" mat-cell *matCellDef="let element"> {{element.firstName}} </td>
         </ng-container>
       
         <!-- Weight Column -->
         <ng-container matColumnDef="lastName">
           <th mat-header-cell *matHeaderCellDef> Sobrenome </th>
-          <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+          <td class="lastName" mat-cell *matCellDef="let element"> {{element.lastName}} </td>
         </ng-container>
       
         <!-- Symbol Column -->
         <ng-container matColumnDef="mothersName">
-          <th mat-header-cell *matHeaderCellDef> Mãe </th>
-          <td mat-cell *matCellDef="let element"> {{element.mothersName}} </td>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Mãe </th>
+          <td class="mothersName" mat-cell *matCellDef="let element"> {{element.mothersName}} </td>
         </ng-container>
 
         <!-- Position Column -->
         <ng-container matColumnDef="city">
-          <th mat-header-cell *matHeaderCellDef> Cidade </th>
-          <td mat-cell *matCellDef="let element"> {{element.city}} </td>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Cidade </th>
+          <td class="city" mat-cell *matCellDef="let element"> {{element.city}} </td>
         </ng-container>
       
         <!-- Name Column -->
         <ng-container matColumnDef="bloodType">
-          <th mat-header-cell *matHeaderCellDef> Tipo Sanguíneo </th>
-          <td mat-cell *matCellDef="let element"> {{element.bloodType}} </td>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Tipo Sanguíneo </th>
+          <td class="bloodType" mat-cell *matCellDef="let element"> {{element.bloodType}} </td>
         </ng-container>
       
         <!-- Weight Column -->
         <ng-container matColumnDef="bloodFactor">
-          <th mat-header-cell *matHeaderCellDef> Fator RH </th>
-          <td mat-cell *matCellDef="let element"> {{element.bloodFactor}} </td>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Fator RH </th>
+          <td class="bloodFactor" mat-cell *matCellDef="let element"> {{element.bloodFactor}} </td>
         </ng-container>
       
         <!-- Symbol Column -->
         <ng-container matColumnDef="aptitude">
-          <th mat-header-cell *matHeaderCellDef> Aptidão </th>
-          <td mat-cell *matCellDef="let element"> {{element.aptitude}} </td>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Aptidão </th>
+          <td class="aptitude" mat-cell *matCellDef="let element"> {{element.aptitude}} </td>
         </ng-container>
 
         <!-- Weight Column -->
         <ng-container matColumnDef="edit">
           <th mat-header-cell *matHeaderCellDef> Editar </th>
-          <td mat-cell *matCellDef="let element">
+          <td class="edit" mat-cell *matCellDef="let element">
             <button mat-icon-button>
-              <mat-icon>search</mat-icon>
+              <mat-icon>edit</mat-icon>
             </button>
           </td>
         </ng-container>
@@ -71,9 +71,9 @@
         <!-- Symbol Column -->
         <ng-container matColumnDef="delete">
           <th mat-header-cell *matHeaderCellDef> Excluir </th>
-          <td mat-cell *matCellDef="let element">
+          <td class="delete" mat-cell *matCellDef="let element">
             <button mat-icon-button>
-              <mat-icon>search</mat-icon>
+              <mat-icon>delete</mat-icon>
             </button>
           </td>
         </ng-container>
@@ -82,15 +82,15 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
     
-      <mat-paginator class="mat-elevation-z8"
-          [length]="100"
+      <mat-paginator class="mat-elevation-z2"
+          showFirstLastButtons
           [pageSize]="10"
           [hidePageSize]="true">
       </mat-paginator>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button color="warn">
-          <mat-icon>search</mat-icon>
+      <button mat-raised-button color="accent">
+          <mat-icon>arrow_back</mat-icon>
           <span>Voltar</span>
         </button>
     </mat-card-actions>

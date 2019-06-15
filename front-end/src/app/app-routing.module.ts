@@ -11,6 +11,7 @@ import { MessageSendComponent } from './views/message/message-send/message-send.
 import { MessageHistoryComponent } from './views/message/message-history/message-history.component';
 import { MessageModelsComponent } from './views/message/message-models/message-models.component';
 import { MessageModelFormComponent } from './views/message/message-model-form/message-model-form.component';
+import { MessageListComponent } from './views/message/message-list/message-list.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
@@ -47,6 +48,9 @@ const routes: Routes = [
         },
         { path: 'model-form', component: MessageModelFormComponent,
             data: { title: 'Cadastro de novo Modelo de Menssagem' }
+        },
+        { path: 'list', component: MessageListComponent,
+            data: { title: 'Resultado do filtro de Doadores' }
         },
       ]
   }

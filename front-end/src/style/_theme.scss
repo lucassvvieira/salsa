@@ -9,54 +9,72 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$theme-primary: mat-palette($mat-indigo);
-$theme-accent:  mat-palette($mat-pink, A200, A100, A400);
+// $theme-primary: mat-palette($mat-indigo);
+// $theme-accent:  mat-palette($mat-pink, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
-$theme-warn:    mat-palette($mat-red);
+// $theme-warn:    mat-palette($mat-red);
 
 // Create the theme object (a Sass map containing all of the palettes).
-$theme: mat-dark-theme($theme-primary, $theme-accent, $theme-warn);
+// $theme: mat-dark-theme($theme-primary, $theme-accent, $theme-warn);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 //@include angular-material-theme($candy-app-theme);
 
+.light-theme {
+    $theme-primary: mat-palette($mat-teal, 900, 500, 900);
+    $theme-accent:  mat-palette($mat-yellow, A200, A100, A400);
+    $theme-warn:    mat-palette($mat-red);
+
+    $theme: mat-light-theme($theme-primary, $theme-accent, $theme-warn);
+    @include angular-material-theme($theme);
+}
+
+.dark-theme {
+    $theme-primary: mat-palette($mat-teal, 900, 500, 900);
+    $theme-accent:  mat-palette($mat-yellow, A400, 300, A700);
+    $theme-warn:    mat-palette($mat-red);
+
+    $theme: mat-dark-theme($theme-primary, $theme-accent, $theme-warn);
+    @include angular-material-theme($theme);
+}
+
 // create theme for each component
-@include mat-core-theme($theme);
-@include mat-autocomplete-theme($theme);
-@include mat-badge-theme($theme);
-@include mat-bottom-sheet-theme($theme);
-@include mat-button-theme($theme);
-@include mat-button-toggle-theme($theme);
-@include mat-card-theme($theme);
-@include mat-checkbox-theme($theme);
-@include mat-chips-theme($theme);
-@include mat-table-theme($theme);
-@include mat-datepicker-theme($theme);
-@include mat-dialog-theme($theme);
-@include mat-divider-theme($theme);
-@include mat-expansion-panel-theme($theme);
-@include mat-form-field-theme($theme);
-@include mat-grid-list-theme($theme);
-@include mat-icon-theme($theme);
-@include mat-input-theme($theme);
-@include mat-list-theme($theme);
-@include mat-menu-theme($theme);
-@include mat-paginator-theme($theme);
-@include mat-progress-bar-theme($theme);
-@include mat-progress-spinner-theme($theme);
-@include mat-radio-theme($theme);
-@include mat-select-theme($theme);
-@include mat-sidenav-theme($theme);
-@include mat-slide-toggle-theme($theme);
-@include mat-slider-theme($theme);
-@include mat-stepper-theme($theme);
-@include mat-sort-theme($theme);
-@include mat-tabs-theme($theme);
-@include mat-toolbar-theme($theme);
-@include mat-tooltip-theme($theme);
-@include mat-tree-theme($theme);
-@include mat-snack-bar-theme($theme);
+// @include mat-core-theme($theme);
+// @include mat-autocomplete-theme($theme);
+// @include mat-badge-theme($theme);
+// @include mat-bottom-sheet-theme($theme);
+// @include mat-button-theme($theme);
+// @include mat-button-toggle-theme($theme);
+// @include mat-card-theme($theme);
+// @include mat-checkbox-theme($theme);
+// @include mat-chips-theme($theme);
+// @include mat-table-theme($theme);
+// @include mat-datepicker-theme($theme);
+// @include mat-dialog-theme($theme);
+// @include mat-divider-theme($theme);
+// @include mat-expansion-panel-theme($theme);
+// @include mat-form-field-theme($theme);
+// @include mat-grid-list-theme($theme);
+// @include mat-icon-theme($theme);
+// @include mat-input-theme($theme);
+// @include mat-list-theme($theme);
+// @include mat-menu-theme($theme);
+// @include mat-paginator-theme($theme);
+// @include mat-progress-bar-theme($theme);
+// @include mat-progress-spinner-theme($theme);
+// @include mat-radio-theme($theme);
+// @include mat-select-theme($theme);
+// @include mat-sidenav-theme($theme);
+// @include mat-slide-toggle-theme($theme);
+// @include mat-slider-theme($theme);
+// @include mat-stepper-theme($theme);
+// @include mat-sort-theme($theme);
+// @include mat-tabs-theme($theme);
+// @include mat-toolbar-theme($theme);
+// @include mat-tooltip-theme($theme);
+// @include mat-tree-theme($theme);
+// @include mat-snack-bar-theme($theme);
 

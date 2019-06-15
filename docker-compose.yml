@@ -34,7 +34,7 @@ services:
     ports:
       - 80:80
     volumes:
-      - ./front-end/dist:/usr/share/nginx/html:ro
+      - ./front-end/dist/salsa:/usr/share/nginx/html:ro
     environment:
       - NGINX_PORT=80
     depends_on:
